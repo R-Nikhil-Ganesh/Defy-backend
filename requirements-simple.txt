@@ -1,0 +1,11 @@
+# Simplified requirements for initial setup
+fastapi==0.103.2
+uvicorn==0.23.2
+pydantic==2.4.2
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Add these later after basic setup works:
+# web3==6.10.0
+# eth-account==0.8.0
+# pydantic-settings==2.0.3
