@@ -31,8 +31,14 @@ class MarketplaceService:
         self.state_path.parent.mkdir(parents=True, exist_ok=True)
         self.advance_percent = max(0.0, min(1.0, advance_percent))
         self._lock = asyncio.Lock()
-        self._state: Dict[str, Any] = {"parents": {}, "requests": {}, "payments": {}}
+        self._state: Dict[str, Any] = {
+            "parents": {},
+            "requests": {},
+            "payments": {},
+            "meta": {"parentSequence": 0},
+        }
         self._load_state()
+        self._ensure_state_defaults()
         self.client: Optional[Any] = None
         if razorpay and razorpay_key_id and razorpay_key_secret:
             self.client = razorpay.Client(auth=(razorpay_key_id, razorpay_key_secret))
@@ -45,7 +51,12 @@ class MarketplaceService:
             try:
                 self._state = json.loads(self.state_path.read_text(encoding="utf-8"))
             except Exception:
-                self._state = {"parents": {}, "requests": {}, "payments": {}}
+                self._state = {
+                    "parents": {},
+                    "requests": {},
+                    "payments": {},
+                    "meta": {"parentSequence": 0},
+                }
         else:
             self.state_path.write_text(json.dumps(self._state), encoding="utf-8")
 
@@ -53,6 +64,37 @@ class MarketplaceService:
         tmp_path = self.state_path.with_suffix(".tmp")
         tmp_path.write_text(json.dumps(self._state, indent=2), encoding="utf-8")
         tmp_path.replace(self.state_path)
+
+    def _ensure_state_defaults(self) -> None:
+        self._state.setdefault("parents", {})
+        self._state.setdefault("requests", {})
+        self._state.setdefault("payments", {})
+        meta = self._state.setdefault("meta", {})
+        sequence = meta.get("parentSequence")
+        if not isinstance(sequence, int) or sequence < 0:
+            sequence = 0
+
+        for parent in self._state["parents"].values():
+            if "parentBatchNumber" not in parent:
+                parent["parentBatchNumber"] = parent.get("parentId") or str(uuid.uuid4())
+            identifier = parent.get("parentBatchNumber", "")
+            if identifier.startswith("PB-"):
+                suffix = identifier.split("-")[-1]
+                if suffix.isdigit():
+                    sequence = max(sequence, int(suffix))
+            parent.setdefault("status", "published")
+            parent.setdefault("publishedAt", parent.get("createdAt"))
+
+        meta["parentSequence"] = sequence
+
+    def _next_parent_sequence(self) -> int:
+        meta = self._state.setdefault("meta", {})
+        meta["parentSequence"] = int(meta.get("parentSequence", 0)) + 1
+        return meta["parentSequence"]
+
+    def _generate_parent_batch_number(self) -> str:
+        sequence = self._next_parent_sequence()
+        return f"PB-{sequence:05d}"
 
     # ------------------------------------------------------------------
     # Parent offers
@@ -65,8 +107,10 @@ class MarketplaceService:
 
         async with self._lock:
             parent_id = str(uuid.uuid4())
+            batch_number = self._generate_parent_batch_number()
             record = {
                 "parentId": parent_id,
+                "parentBatchNumber": batch_number,
                 "producer": producer,
                 "productType": payload["productType"],
                 "unit": payload["unit"],
@@ -76,19 +120,48 @@ class MarketplaceService:
                 "createdAt": _utc_now(),
                 "metadata": payload.get("metadata") or {},
                 "pricingCurrency": payload.get("currency", "INR"),
+                "status": "draft",
+                "publishedAt": None,
             }
             self._state["parents"][parent_id] = record
             self._write_state()
             return record.copy()
 
-    async def list_parents(self) -> List[Dict[str, Any]]:
+    async def list_parents(
+        self,
+        *,
+        status: Optional[str] = None,
+        producer: Optional[str] = None,
+    ) -> List[Dict[str, Any]]:
         async with self._lock:
-            return [record.copy() for record in self._state["parents"].values()]
+            results: List[Dict[str, Any]] = []
+            for record in self._state["parents"].values():
+                if status and record.get("status") != status:
+                    continue
+                if producer and record.get("producer") != producer:
+                    continue
+                results.append(record.copy())
+            return sorted(results, key=lambda item: item["createdAt"], reverse=True)
 
     async def get_parent(self, parent_id: str) -> Optional[Dict[str, Any]]:
         async with self._lock:
             record = self._state["parents"].get(parent_id)
             return record.copy() if record else None
+
+    async def publish_parent(self, parent_id: str, *, producer: str) -> Dict[str, Any]:
+        async with self._lock:
+            parent = self._state["parents"].get(parent_id)
+            if not parent:
+                raise ValueError("Parent batch not found")
+            if parent.get("producer") != producer:
+                raise ValueError("Cannot publish batches you do not own")
+            if parent.get("status") == "published":
+                raise ValueError("Parent batch already published")
+
+            parent["status"] = "published"
+            parent["publishedAt"] = _utc_now()
+            self._write_state()
+            return parent.copy()
 
     # ------------------------------------------------------------------
     # Retailer requests / bids
@@ -110,6 +183,9 @@ class MarketplaceService:
             parent = self._state["parents"].get(parent_id)
             if not parent:
                 raise ValueError("Parent batch not found")
+            if parent.get("status") != "published":
+                raise ValueError("Parent batch must be published before bidding")
+
             available = parent["availableQuantity"]
             if quantity > available:
                 raise ValueError("Requested quantity exceeds available amount")
@@ -120,11 +196,15 @@ class MarketplaceService:
             record = {
                 "requestId": request_id,
                 "parentId": parent_id,
+                "parentBatchNumber": parent.get("parentBatchNumber"),
+                "parentProductType": parent.get("productType"),
+                "producer": parent.get("producer"),
                 "retailer": retailer,
                 "quantity": quantity,
                 "bidPrice": bid_price,
-                "status": "pending",
+                "status": "pending_approval",
                 "createdAt": _utc_now(),
+                "approvedAt": None,
                 "currency": parent.get("pricingCurrency", "INR"),
                 "advancePercent": self.advance_percent,
                 "payment": None,
@@ -138,6 +218,40 @@ class MarketplaceService:
         async with self._lock:
             record = self._state["requests"].get(request_id)
             return record.copy() if record else None
+
+    async def approve_request(self, request_id: str, *, producer: str) -> Dict[str, Any]:
+        async with self._lock:
+            request = self._state["requests"].get(request_id)
+            if not request:
+                raise ValueError("Request not found")
+            if request.get("producer") != producer:
+                raise ValueError("Only the producer can approve this bid")
+            if request.get("status") != "pending_approval":
+                raise ValueError("Request is not pending approval")
+
+            request["status"] = "approved"
+            request["approvedAt"] = _utc_now()
+            self._write_state()
+            return request.copy()
+
+    async def reject_request(self, request_id: str, *, producer: str) -> Dict[str, Any]:
+        async with self._lock:
+            request = self._state["requests"].get(request_id)
+            if not request:
+                raise ValueError("Request not found")
+            if request.get("producer") != producer:
+                raise ValueError("Only the producer can reject this bid")
+            if request.get("status") != "pending_approval":
+                raise ValueError("Request is not pending approval")
+
+            parent = self._state["parents"].get(request["parentId"])
+            if parent:
+                parent["availableQuantity"] = parent["availableQuantity"] + request["quantity"]
+
+            request["status"] = "rejected"
+            request["rejectedAt"] = _utc_now()
+            self._write_state()
+            return request.copy()
 
     async def list_requests(
         self,
@@ -154,9 +268,11 @@ class MarketplaceService:
                 if retailer and record["retailer"] != retailer:
                     continue
                 if producer:
-                    parent = self._state["parents"].get(record["parentId"])
-                    if not parent or parent.get("producer") != producer:
-                        continue
+                    owner = record.get("producer")
+                    if owner != producer:
+                        parent = self._state["parents"].get(record["parentId"])
+                        if not parent or parent.get("producer") != producer:
+                            continue
                 results.append(record.copy())
             return results
 
@@ -177,8 +293,8 @@ class MarketplaceService:
             request = self._state["requests"].get(request_id)
             if not request:
                 raise ValueError("Request not found")
-            if request["status"] not in {"pending", "awaiting_payment"}:
-                raise ValueError("Request is not awaiting payment")
+            if request["status"] not in {"approved", "awaiting_payment"}:
+                raise ValueError("Request must be approved before payment")
 
             parent = self._state["parents"].get(request["parentId"])
             if not parent:

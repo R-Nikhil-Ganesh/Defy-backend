@@ -106,8 +106,10 @@ def _map_reading(record: Dict[str, Any]) -> SensorReading:
 
 
 def _map_parent_offer(record: Dict[str, Any]) -> ParentOfferResponse:
+    published_at = record.get("publishedAt")
     return ParentOfferResponse(
         parentId=record["parentId"],
+        parentBatchNumber=record.get("parentBatchNumber", record["parentId"]),
         producer=record["producer"],
         productType=record["productType"],
         unit=record["unit"],
@@ -116,6 +118,8 @@ def _map_parent_offer(record: Dict[str, Any]) -> ParentOfferResponse:
         availableQuantity=record["availableQuantity"],
         pricingCurrency=record.get("pricingCurrency", "INR"),
         createdAt=_parse_iso(record["createdAt"]),
+        status=record.get("status", "published"),
+        publishedAt=_parse_iso(published_at) if published_at else None,
         metadata=record.get("metadata"),
     )
 
@@ -136,14 +140,19 @@ def _map_payment_info(payment: Dict[str, Any]) -> MarketplacePaymentInfo:
 def _map_marketplace_request(record: Dict[str, Any]) -> MarketplaceRequestResponse:
     payment = record.get("payment")
     fulfilled_at = record.get("fulfilledAt")
+    approved_at = record.get("approvedAt")
     return MarketplaceRequestResponse(
         requestId=record["requestId"],
         parentId=record["parentId"],
+        parentBatchNumber=record.get("parentBatchNumber"),
+        parentProductType=record.get("parentProductType"),
         retailer=record["retailer"],
+        producer=record.get("producer"),
         quantity=record["quantity"],
         bidPrice=record["bidPrice"],
         status=record["status"],
         createdAt=_parse_iso(record["createdAt"]),
+        approvedAt=_parse_iso(approved_at) if approved_at else None,
         currency=record.get("currency", "INR"),
         advancePercent=record.get("advancePercent", settings.MARKETPLACE_ADVANCE_PERCENT),
         payment=_map_payment_info(payment) if payment else None,
@@ -578,10 +587,33 @@ async def create_parent_offer(
 
 
 @app.get("/marketplace/parent", response_model=List[ParentOfferResponse])
-async def list_parent_offers(user: User = Depends(require_supply_chain_roles)):
+async def list_parent_offers(
+    status: Optional[str] = None,
+    user: User = Depends(require_supply_chain_roles),
+):
     marketplace = _require_service(marketplace_service, "Marketplace")
-    records = await marketplace.list_parents()
+    role = user.role
+    status_filter = status
+    producer_filter = None
+
+    if role == UserRole.RETAILER or role == UserRole.TRANSPORTER:
+        status_filter = "published"
+    elif role == UserRole.PRODUCER:
+        producer_filter = user.username
+
+    records = await marketplace.list_parents(status=status_filter, producer=producer_filter)
     return [_map_parent_offer(record) for record in records]
+
+
+@app.post("/marketplace/parent/{parent_id}/publish", response_model=ParentOfferResponse)
+async def publish_parent_offer(parent_id: str, user: User = Depends(require_producer)):
+    marketplace = _require_service(marketplace_service, "Marketplace")
+    try:
+        record = await marketplace.publish_parent(parent_id, producer=user.username)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    return _map_parent_offer(record)
 
 
 @app.get("/marketplace/requests", response_model=List[MarketplaceRequestResponse])
@@ -615,6 +647,34 @@ async def create_marketplace_request(
             quantity=request.quantity,
             bid_price=request.bidPrice,
         )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    return _map_marketplace_request(record)
+
+
+@app.post("/marketplace/requests/{request_id}/approve", response_model=MarketplaceRequestResponse)
+async def approve_marketplace_request(
+    request_id: str,
+    user: User = Depends(require_producer),
+):
+    marketplace = _require_service(marketplace_service, "Marketplace")
+    try:
+        record = await marketplace.approve_request(request_id, producer=user.username)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    return _map_marketplace_request(record)
+
+
+@app.post("/marketplace/requests/{request_id}/reject", response_model=MarketplaceRequestResponse)
+async def reject_marketplace_request(
+    request_id: str,
+    user: User = Depends(require_producer),
+):
+    marketplace = _require_service(marketplace_service, "Marketplace")
+    try:
+        record = await marketplace.reject_request(request_id, producer=user.username)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 

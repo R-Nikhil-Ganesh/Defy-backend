@@ -203,6 +203,7 @@ class ParentOfferRequest(BaseModel):
 
 class ParentOfferResponse(BaseModel):
     parentId: str
+    parentBatchNumber: str
     producer: str
     productType: str
     unit: str
@@ -211,6 +212,8 @@ class ParentOfferResponse(BaseModel):
     availableQuantity: float
     pricingCurrency: str
     createdAt: datetime
+    status: str
+    publishedAt: Optional[datetime] = None
     metadata: Optional[Dict[str, Any]] = None
 
 
@@ -233,11 +236,15 @@ class MarketplacePaymentInfo(BaseModel):
 class MarketplaceRequestResponse(BaseModel):
     requestId: str
     parentId: str
+    parentBatchNumber: Optional[str] = None
+    parentProductType: Optional[str] = None
     retailer: str
+    producer: Optional[str] = None
     quantity: float
     bidPrice: float
     status: str
     createdAt: datetime
+    approvedAt: Optional[datetime] = None
     currency: str
     advancePercent: float
     payment: Optional[MarketplacePaymentInfo] = None

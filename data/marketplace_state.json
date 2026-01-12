@@ -1,1 +1,115 @@
-{"parents": {}, "requests": {}, "payments": {}}
+{
+  "parents": {
+    "8cd50c21-6e36-42a9-b18d-333669b88f9d": {
+      "parentId": "8cd50c21-6e36-42a9-b18d-333669b88f9d",
+      "parentBatchNumber": "PB-00001",
+      "producer": "producer",
+      "productType": "Apple",
+      "unit": "kg",
+      "basePrice": 100.0,
+      "totalQuantity": 90.0,
+      "availableQuantity": 50.0,
+      "createdAt": "2026-01-12T13:49:10.254014Z",
+      "metadata": {},
+      "pricingCurrency": "INR",
+      "status": "published",
+      "publishedAt": "2026-01-12T13:49:12.966024Z"
+    }
+  },
+  "requests": {
+    "8861083f-fbcf-412f-9e05-b18f65329c74": {
+      "requestId": "8861083f-fbcf-412f-9e05-b18f65329c74",
+      "parentId": "8cd50c21-6e36-42a9-b18d-333669b88f9d",
+      "parentBatchNumber": "PB-00001",
+      "parentProductType": "Apple",
+      "producer": "producer",
+      "retailer": "retailer",
+      "quantity": 10.0,
+      "bidPrice": 100.0,
+      "status": "pending",
+      "createdAt": "2026-01-12T13:50:34.530239Z",
+      "currency": "INR",
+      "advancePercent": 0.2,
+      "payment": null
+    },
+    "63966778-9095-4f83-bd91-248ce3a04ac0": {
+      "requestId": "63966778-9095-4f83-bd91-248ce3a04ac0",
+      "parentId": "8cd50c21-6e36-42a9-b18d-333669b88f9d",
+      "parentBatchNumber": "PB-00001",
+      "parentProductType": "Apple",
+      "producer": "producer",
+      "retailer": "retailer",
+      "quantity": 10.0,
+      "bidPrice": 100.0,
+      "status": "fulfilled",
+      "createdAt": "2026-01-12T13:58:25.061202Z",
+      "approvedAt": "2026-01-12T13:58:52.236455Z",
+      "currency": "INR",
+      "advancePercent": 0.2,
+      "payment": {
+        "orderId": "order_S2zhEaa8L0Hvy7",
+        "requestId": "63966778-9095-4f83-bd91-248ce3a04ac0",
+        "amount": 20000,
+        "currency": "INR",
+        "status": "paid",
+        "createdAt": "2026-01-12T14:06:19.690934Z",
+        "paymentId": "pay_S2zjC8OgCzrwt7",
+        "paidAt": "2026-01-12T14:08:30.056236Z"
+      },
+      "childBatchId": "sadfdsj",
+      "fulfilledAt": "2026-01-12T14:09:28.625378Z"
+    },
+    "860dd301-f467-40b5-8f31-07a628aa607d": {
+      "requestId": "860dd301-f467-40b5-8f31-07a628aa607d",
+      "parentId": "8cd50c21-6e36-42a9-b18d-333669b88f9d",
+      "parentBatchNumber": "PB-00001",
+      "parentProductType": "Apple",
+      "producer": "producer",
+      "retailer": "retailer",
+      "quantity": 20.0,
+      "bidPrice": 110.0,
+      "status": "fulfilled",
+      "createdAt": "2026-01-12T14:13:04.239566Z",
+      "approvedAt": "2026-01-12T14:13:21.853376Z",
+      "currency": "INR",
+      "advancePercent": 0.2,
+      "payment": {
+        "orderId": "order_S2zpAvcVifYOn9",
+        "requestId": "860dd301-f467-40b5-8f31-07a628aa607d",
+        "amount": 44000,
+        "currency": "INR",
+        "status": "paid",
+        "createdAt": "2026-01-12T14:13:50.672317Z",
+        "paymentId": "pay_S2zpLWSrZcVDK2",
+        "paidAt": "2026-01-12T14:14:20.665967Z"
+      },
+      "childBatchId": "nikhil",
+      "fulfilledAt": "2026-01-12T14:15:24.288959Z"
+    }
+  },
+  "payments": {
+    "order_S2zhEaa8L0Hvy7": {
+      "orderId": "order_S2zhEaa8L0Hvy7",
+      "requestId": "63966778-9095-4f83-bd91-248ce3a04ac0",
+      "amount": 20000,
+      "currency": "INR",
+      "status": "paid",
+      "createdAt": "2026-01-12T14:06:19.690934Z",
+      "paymentId": "pay_S2zjC8OgCzrwt7",
+      "paidAt": "2026-01-12T14:08:30.056236Z"
+    },
+    "order_S2zpAvcVifYOn9": {
+      "orderId": "order_S2zpAvcVifYOn9",
+      "requestId": "860dd301-f467-40b5-8f31-07a628aa607d",
+      "amount": 44000,
+      "currency": "INR",
+      "status": "paid",
+      "createdAt": "2026-01-12T14:13:50.672317Z",
+      "paymentId": "pay_S2zpLWSrZcVDK2",
+      "paidAt": "2026-01-12T14:14:20.665967Z"
+    }
+  },
+  "meta": {
+    "parentSequence": 1
+  }
+}
