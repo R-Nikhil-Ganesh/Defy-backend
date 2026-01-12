@@ -264,7 +264,7 @@ class BlockchainService:
             result = {
                 'batchId': batch_id_returned,
                 'productType': product_type,
-                'created': location_history[0]["timestamp"] if location_history else datetime.now().isoformat() + "Z",
+                'created': location_history[0]["timestamp"] if location_history else datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                 'currentStage': current_stage,
                 'currentLocation': current_location,
                 'locationHistory': list(reversed(location_history)),  # Most recent first
@@ -456,7 +456,7 @@ class BlockchainService:
                     block_info = self.w3.eth.get_block(event['blockNumber'])
                     
                     # Get stage and location from event args
-                    stage = event['args'].get('stage', 'Updated')
+                    stage = event['args'].get('stage', 'In Transit')  # Default to 'In Transit' instead of 'Updated'
                     location = event['args'].get('location', 'Unknown')
                     
                     location_history.append({

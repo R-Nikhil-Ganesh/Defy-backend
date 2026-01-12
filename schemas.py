@@ -88,6 +88,12 @@ class BatchResponse(BaseModel):
     alerts: List[Alert]
     isActive: bool
     isFinalStage: bool  # True when stage is SELLING
+    # Time and freshness data for consumers
+    ageInDays: Optional[float] = None
+    ageInHours: Optional[float] = None
+    estimatedShelfLifeDays: Optional[float] = None
+    freshnessScore: Optional[float] = None
+    freshnessCategory: Optional[str] = None
 
 # Error Response
 class ErrorResponse(BaseModel):
@@ -169,6 +175,10 @@ class QRScanRequest(BaseModel):
     sensorId: str
     locationType: SensorType
     qrPayload: Optional[str] = None
+    # Mandatory sample testing fields
+    sampleImageBase64: Optional[str] = None  # Base64 encoded image for freshness scan
+    freshnessScore: Optional[float] = None
+    freshnessCategory: Optional[str] = None
 
 
 class QRScanResponse(BaseModel):
@@ -176,6 +186,9 @@ class QRScanResponse(BaseModel):
     batchId: str
     sensorId: str
     locationType: SensorType
+    sampleTestingRequired: bool = False  # Indicates if sample testing was mandatory but missing
+    freshnessScore: Optional[float] = None
+    freshnessCategory: Optional[str] = None
 
 
 # ML / Analytics Models

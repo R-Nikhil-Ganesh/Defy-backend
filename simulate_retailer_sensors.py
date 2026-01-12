@@ -16,7 +16,6 @@ BACKEND_URL = "http://localhost:8000"
 SENSORS = [
     {"id": "SENSOR-R-001", "type": "retailer", "batch": "BATCH-001", "store": "Store A"},
     {"id": "SENSOR-R-002", "type": "retailer", "batch": "BATCH-002", "store": "Store B"},
-    {"id": "SENSOR-R-003", "type": "retailer", "batch": "BATCH-003", "store": "Store C"},
 ]
 
 # Retailer credentials

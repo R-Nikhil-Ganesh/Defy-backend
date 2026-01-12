@@ -13,10 +13,10 @@ from typing import List, Dict
 BACKEND_URL = "http://localhost:8000"
 
 # Transporter sensors - monitoring vehicles during transport
+# Using common batch IDs that likely exist from previous demos
 SENSORS = [
     {"id": "SENSOR-T-001", "type": "transporter", "batch": "BATCH-001", "vehicle": "Truck-A", "route": "Farm→Warehouse"},
-    {"id": "SENSOR-T-002", "type": "transporter", "batch": "BATCH-002", "vehicle": "Truck-B", "route": "Warehouse→Store"},
-    {"id": "SENSOR-T-003", "type": "transporter", "batch": "BATCH-003", "vehicle": "Van-C", "route": "Distribution→Retail"},
+    {"id": "SENSOR-T-004", "type": "transporter", "batch": "BATCH-002", "vehicle": "Truck-B", "route": "Warehouse→Store"},
 ]
 
 # Transporter credentials
