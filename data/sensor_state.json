@@ -1,1 +1,29 @@
-{"sensors": {}, "sensorLinks": {}, "batchLinks": {}, "readings": {}}
+{
+  "sensors": {
+    "sen": {
+      "sensorId": "sen",
+      "sensorType": "retailer",
+      "label": null,
+      "vehicleOrStoreId": null,
+      "metadata": {},
+      "owner": "retailer",
+      "registeredAt": "2026-01-12T15:17:52.573511Z",
+      "lastHeartbeat": "2026-01-12T15:18:35.584476Z"
+    }
+  },
+  "sensorLinks": {},
+  "batchLinks": {},
+  "readings": {
+    "nikhil": [
+      {
+        "batchId": "nikhil",
+        "sensorId": "sen",
+        "sensorType": "retailer",
+        "temperature": 4.5,
+        "humidity": 65.0,
+        "capturedAt": "2026-01-12T15:18:35.584476Z",
+        "source": "retailer"
+      }
+    ]
+  }
+}

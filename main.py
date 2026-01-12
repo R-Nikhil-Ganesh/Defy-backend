@@ -378,11 +378,11 @@ async def get_batch_details(batch_id: str, user: User = Depends(get_current_user
 @app.post("/sensors/register", response_model=SensorRegistrationResponse)
 async def register_sensor_endpoint(
     request: SensorRegistrationRequest,
-    user: User = Depends(require_retailer_or_transporter),
+    user: User = Depends(require_supply_chain_roles),
 ):
     registry = _require_service(sensor_registry, "Sensor registry")
 
-    # Enforce sensor type per role
+    # Enforce sensor type per role (except Admin who can register any type)
     if user.role == UserRole.TRANSPORTER and request.sensorType != SensorType.TRANSPORTER:
         raise HTTPException(status_code=400, detail="Transporters can only register transporter sensors")
     if user.role == UserRole.RETAILER and request.sensorType != SensorType.RETAILER:
@@ -409,7 +409,7 @@ async def register_sensor_endpoint(
 @app.post("/sensors/data", response_model=SensorReadingResponse)
 async def push_sensor_data(
     request: SensorReadingRequest,
-    user: User = Depends(require_retailer_or_transporter),
+    user: User = Depends(require_supply_chain_roles),
 ):
     registry = _require_service(sensor_registry, "Sensor registry")
     captured_at = _datetime_to_iso(request.capturedAt) if request.capturedAt else None
@@ -498,7 +498,7 @@ async def scan_qr_code(request: QRScanRequest, user: User = Depends(require_reta
 async def freshness_scan(
     batchId: Optional[str] = Form(None),
     file: UploadFile = File(...),
-    user: User = Depends(require_producer_or_retailer),
+    user: User = Depends(require_supply_chain_roles),
 ):
     classifier = _require_service(freshness_classifier, "Freshness classifier")
 
