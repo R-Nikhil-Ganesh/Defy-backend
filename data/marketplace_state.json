@@ -14,6 +14,36 @@
       "pricingCurrency": "INR",
       "status": "published",
       "publishedAt": "2026-01-12T13:49:12.966024Z"
+    },
+    "fc68e292-d361-4775-930d-9235a4904ad4": {
+      "parentId": "fc68e292-d361-4775-930d-9235a4904ad4",
+      "parentBatchNumber": "PB-00002",
+      "producer": "producer",
+      "productType": "Rice",
+      "unit": "kg",
+      "basePrice": 60.0,
+      "totalQuantity": 100.0,
+      "availableQuantity": 75.0,
+      "createdAt": "2026-01-12T20:38:54.900287Z",
+      "metadata": {},
+      "pricingCurrency": "INR",
+      "status": "published",
+      "publishedAt": "2026-01-12T20:39:00.348273Z"
+    },
+    "8cf02581-83a7-4235-b483-94f658aefc4b": {
+      "parentId": "8cf02581-83a7-4235-b483-94f658aefc4b",
+      "parentBatchNumber": "PB-00003",
+      "producer": "producer",
+      "productType": "Banana",
+      "unit": "kg",
+      "basePrice": 50.0,
+      "totalQuantity": 30.0,
+      "availableQuantity": 25.0,
+      "createdAt": "2026-01-12T21:04:47.157474Z",
+      "metadata": {},
+      "pricingCurrency": "INR",
+      "status": "published",
+      "publishedAt": "2026-01-12T21:04:51.605693Z"
     }
   },
   "requests": {
@@ -95,19 +125,77 @@
       "retailer": "retailer",
       "quantity": 10.0,
       "bidPrice": 100.0,
-      "status": "awaiting_payment",
+      "status": "fulfilled",
       "createdAt": "2026-01-12T18:48:09.274231Z",
       "approvedAt": "2026-01-12T18:50:23.362160Z",
       "currency": "INR",
       "advancePercent": 0.2,
       "payment": {
-        "orderId": "order_S34dU2RvIH6JBI",
+        "orderId": "order_S35k8Y9fa8CM5R",
         "requestId": "21552f22-8e89-4374-800a-2eb9685ad556",
         "amount": 20000,
         "currency": "INR",
-        "status": "created",
-        "createdAt": "2026-01-12T18:56:13.135121Z"
-      }
+        "status": "paid",
+        "createdAt": "2026-01-12T20:01:12.739922Z",
+        "paymentId": "pay_S35kHkGXfH8xu3",
+        "paidAt": "2026-01-12T20:01:37.526032Z"
+      },
+      "childBatchId": "hgfugchvh",
+      "fulfilledAt": "2026-01-12T20:04:08.773144Z"
+    },
+    "cb6ea97a-c5d2-4a22-b874-2534380f4d64": {
+      "requestId": "cb6ea97a-c5d2-4a22-b874-2534380f4d64",
+      "parentId": "fc68e292-d361-4775-930d-9235a4904ad4",
+      "parentBatchNumber": "PB-00002",
+      "parentProductType": "Rice",
+      "producer": "producer",
+      "retailer": "retailer",
+      "quantity": 25.0,
+      "bidPrice": 70.0,
+      "status": "fulfilled",
+      "createdAt": "2026-01-12T20:39:23.104787Z",
+      "approvedAt": "2026-01-12T20:39:37.549338Z",
+      "currency": "INR",
+      "advancePercent": 0.2,
+      "payment": {
+        "orderId": "order_S36OsRi95HhTba",
+        "requestId": "cb6ea97a-c5d2-4a22-b874-2534380f4d64",
+        "amount": 35000,
+        "currency": "INR",
+        "status": "paid",
+        "createdAt": "2026-01-12T20:39:46.931920Z",
+        "paymentId": "pay_S36P8lEJh7Mz1F",
+        "paidAt": "2026-01-12T20:40:18.509576Z"
+      },
+      "childBatchId": "rice1",
+      "fulfilledAt": "2026-01-12T20:40:39.056539Z"
+    },
+    "9f0b66d9-268b-4e4a-83cb-202646bb5011": {
+      "requestId": "9f0b66d9-268b-4e4a-83cb-202646bb5011",
+      "parentId": "8cf02581-83a7-4235-b483-94f658aefc4b",
+      "parentBatchNumber": "PB-00003",
+      "parentProductType": "Banana",
+      "producer": "producer",
+      "retailer": "retailer",
+      "quantity": 5.0,
+      "bidPrice": 55.0,
+      "status": "fulfilled",
+      "createdAt": "2026-01-12T21:05:19.866997Z",
+      "approvedAt": "2026-01-12T21:05:35.223678Z",
+      "currency": "INR",
+      "advancePercent": 0.2,
+      "payment": {
+        "orderId": "order_S36qHon18uAVdf",
+        "requestId": "9f0b66d9-268b-4e4a-83cb-202646bb5011",
+        "amount": 5500,
+        "currency": "INR",
+        "status": "paid",
+        "createdAt": "2026-01-12T21:05:43.710421Z",
+        "paymentId": "pay_S36qhfkFRJHSgg",
+        "paidAt": "2026-01-12T21:06:27.738977Z"
+      },
+      "childBatchId": "b1",
+      "fulfilledAt": "2026-01-12T21:07:03.940365Z"
     }
   },
   "payments": {
@@ -138,9 +226,47 @@
       "currency": "INR",
       "status": "created",
       "createdAt": "2026-01-12T18:56:13.135121Z"
+    },
+    "order_S35ivGT1zP58jr": {
+      "orderId": "order_S35ivGT1zP58jr",
+      "requestId": "21552f22-8e89-4374-800a-2eb9685ad556",
+      "amount": 20000,
+      "currency": "INR",
+      "status": "created",
+      "createdAt": "2026-01-12T20:00:03.799652Z"
+    },
+    "order_S35k8Y9fa8CM5R": {
+      "orderId": "order_S35k8Y9fa8CM5R",
+      "requestId": "21552f22-8e89-4374-800a-2eb9685ad556",
+      "amount": 20000,
+      "currency": "INR",
+      "status": "paid",
+      "createdAt": "2026-01-12T20:01:12.739922Z",
+      "paymentId": "pay_S35kHkGXfH8xu3",
+      "paidAt": "2026-01-12T20:01:37.526032Z"
+    },
+    "order_S36OsRi95HhTba": {
+      "orderId": "order_S36OsRi95HhTba",
+      "requestId": "cb6ea97a-c5d2-4a22-b874-2534380f4d64",
+      "amount": 35000,
+      "currency": "INR",
+      "status": "paid",
+      "createdAt": "2026-01-12T20:39:46.931920Z",
+      "paymentId": "pay_S36P8lEJh7Mz1F",
+      "paidAt": "2026-01-12T20:40:18.509576Z"
+    },
+    "order_S36qHon18uAVdf": {
+      "orderId": "order_S36qHon18uAVdf",
+      "requestId": "9f0b66d9-268b-4e4a-83cb-202646bb5011",
+      "amount": 5500,
+      "currency": "INR",
+      "status": "paid",
+      "createdAt": "2026-01-12T21:05:43.710421Z",
+      "paymentId": "pay_S36qhfkFRJHSgg",
+      "paidAt": "2026-01-12T21:06:27.738977Z"
     }
   },
   "meta": {
-    "parentSequence": 1
+    "parentSequence": 3
   }
 }

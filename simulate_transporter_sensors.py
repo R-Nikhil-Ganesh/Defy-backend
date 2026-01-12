@@ -16,7 +16,7 @@ BACKEND_URL = "http://localhost:8000"
 # Using common batch IDs that likely exist from previous demos
 SENSORS = [
     {"id": "SENSOR-T-001", "type": "transporter", "batch": "BATCH-001", "vehicle": "Truck-A", "route": "Farm→Warehouse"},
-    {"id": "SENSOR-T-004", "type": "transporter", "batch": "BATCH-002", "vehicle": "Truck-B", "route": "Warehouse→Store"},
+    {"id": "SENSOR-T-005", "type": "transporter", "batch": "BATCH-002", "vehicle": "Truck-B", "route": "Warehouse→Store"},
 ]
 
 # Transporter credentials

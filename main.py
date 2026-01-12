@@ -294,14 +294,44 @@ async def get_current_user_info(user: User = Depends(get_current_user)):
 async def create_batch(request: CreateBatchRequest, user: User = Depends(require_admin_or_producer)):
     """Create a new batch on the blockchain (Admin or Retailer only)"""
     try:
+        # Create batch on blockchain
         tx_hash = await blockchain_service.create_batch(
             batch_id=request.batchId,
             product_type=request.productType,
             created_by=user.username
         )
+        
+        # If sample image provided, process freshness test and store as alert
+        if request.sampleImageBase64:
+            try:
+                # Run AI freshness analysis
+                from services.ai_service import analyze_freshness
+                analysis_result = await analyze_freshness(request.sampleImageBase64)
+                
+                # Store freshness scan result as blockchain alert
+                alert_data = {
+                    "type": "Freshness Scan",
+                    "stage": "Producer",
+                    "score": analysis_result.get("freshness_score", 0),
+                    "category": analysis_result.get("category", "Unknown"),
+                    "confidence": analysis_result.get("confidence", 0),
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
+                
+                # Encrypt and store alert
+                encrypted_data = str(alert_data)  # In production, use proper encryption
+                await blockchain_service.report_alert(
+                    batch_id=request.batchId,
+                    alert_type="Freshness Scan",
+                    encrypted_data=encrypted_data,
+                    reported_by=user.username
+                )
+            except Exception as e:
+                logger.warning(f"Sample testing failed but batch created: {str(e)}")
+        
         return SuccessResponse(
             success=True,
-            message="Batch created successfully",
+            message="Batch created successfully" + (" with sample test" if request.sampleImageBase64 else ""),
             transactionHash=tx_hash
         )
     except Exception as e:
@@ -446,11 +476,17 @@ async def get_batch_details(batch_id: str, user: User = Depends(get_current_user
                             product_type=batch_data.get("productType", "Mixed"),
                             temperature_c=temperature_c,
                             humidity_percent=humidity_percent,
-                            initial_quality=1.0,
                         )
                         
-                        estimated_shelf_life_days = result.shelf_life_days
-                        logger.info(f"Batch {batch_id} - Predicted shelf life: {estimated_shelf_life_days:.2f} days")
+                        estimated_shelf_life_days = result.hybrid_prediction
+                        logger.info(
+                            "Batch %s - Hybrid shelf life %.2f days (ML %.2f / Arrhenius %.2f, alpha %.2f)",
+                            batch_id,
+                            estimated_shelf_life_days,
+                            result.ml_prediction,
+                            result.arrhenius_prediction,
+                            result.alpha_used,
+                        )
                         
                         # Calculate freshness score based on age vs shelf life
                         # Freshness = 100% at age 0, decreases as age approaches shelf life
@@ -473,7 +509,7 @@ async def get_batch_details(batch_id: str, user: User = Depends(get_current_user
                     logger.error(f"Failed to calculate freshness using hybrid model: {e}", exc_info=True)
             
             # Fallback: Use standard shelf life for product type without sensor data
-            if freshness_score is None and shelf_life_predictor:
+            if shelf_life_predictor and (freshness_score is None or estimated_shelf_life_days is None):
                 try:
                     logger.info(f"Using fallback shelf life calculation for {batch_id} without sensor data")
                     # Use typical storage conditions: 4°C, 60% humidity
@@ -481,14 +517,25 @@ async def get_batch_details(batch_id: str, user: User = Depends(get_current_user
                         product_type=batch_data.get("productType", "Mixed"),
                         temperature_c=4.0,
                         humidity_percent=60.0,
-                        initial_quality=1.0,
                     )
                     
-                    estimated_shelf_life_days = result.shelf_life_days
-                    logger.info(f"Batch {batch_id} - Estimated shelf life (fallback): {estimated_shelf_life_days:.2f} days")
+                    # Always set estimated shelf life
+                    if estimated_shelf_life_days is None:
+                        estimated_shelf_life_days = result.hybrid_prediction
+                        logger.info(
+                            "Batch %s - Fallback hybrid shelf life %.2f days (ML %.2f / Arrhenius %.2f, alpha %.2f)",
+                            batch_id,
+                            estimated_shelf_life_days,
+                            result.ml_prediction,
+                            result.arrhenius_prediction,
+                            result.alpha_used,
+                        )
                     
-                    if estimated_shelf_life_days > 0:
-                        freshness_ratio = max(0, 1 - (max(0, age_in_days) / estimated_shelf_life_days))
+                    # Calculate freshness if not already set
+                    if freshness_score is None and estimated_shelf_life_days and estimated_shelf_life_days > 0:
+                        # Use age_in_hours for more precise calculation of very fresh batches
+                        age_for_calc = age_in_hours / 24.0  # Convert to days
+                        freshness_ratio = max(0, 1 - (max(0, age_for_calc) / estimated_shelf_life_days))
                         freshness_score = freshness_ratio
                         
                         if freshness_score >= 0.7:
@@ -498,9 +545,44 @@ async def get_batch_details(batch_id: str, user: User = Depends(get_current_user
                         else:
                             freshness_category = "Poor"
                         
-                        logger.info(f"Batch {batch_id} - Freshness (fallback): {freshness_score*100:.1f}% ({freshness_category})")
+                        logger.info(f"Batch {batch_id} - Age: {age_for_calc:.4f} days, Shelf Life: {estimated_shelf_life_days:.2f} days, Freshness: {freshness_score*100:.1f}% ({freshness_category})")
                 except Exception as e:
                     logger.error(f"Failed fallback freshness calculation: {e}", exc_info=True)
+            
+            # Ultimate fallback: Use product type defaults if model not available
+            if freshness_score is None or estimated_shelf_life_days is None:
+                logger.warning(f"Shelf life predictor not available, using product type defaults for {batch_id}")
+                # Default shelf life by product type (in days at optimal storage)
+                product_type = batch_data.get("productType", "Mixed").lower()
+                default_shelf_lives = {
+                    "apple": 30, "banana": 7, "tomato": 14, "grape": 7,
+                    "orange": 21, "strawberry": 7, "lettuce": 7, "mixed": 14
+                }
+                
+                # Find matching product type
+                default_shelf_life = 14  # Default for unknown
+                for key, days in default_shelf_lives.items():
+                    if key in product_type:
+                        default_shelf_life = days
+                        break
+                
+                if estimated_shelf_life_days is None:
+                    estimated_shelf_life_days = default_shelf_life
+                    logger.info(f"Batch {batch_id} - Using default shelf life: {estimated_shelf_life_days} days")
+                
+                if freshness_score is None:
+                    age_for_calc = age_in_hours / 24.0
+                    freshness_ratio = max(0, 1 - (max(0, age_for_calc) / estimated_shelf_life_days))
+                    freshness_score = freshness_ratio
+                    
+                    if freshness_score >= 0.7:
+                        freshness_category = "Fresh"
+                    elif freshness_score >= 0.4:
+                        freshness_category = "Moderate"
+                    else:
+                        freshness_category = "Poor"
+                    
+                    logger.info(f"Batch {batch_id} - Default calculation: Age {age_for_calc:.4f}d, Shelf Life {estimated_shelf_life_days}d, Freshness {freshness_score*100:.1f}% ({freshness_category})")
         
         # Add computed fields
         batch_data["ageInDays"] = round(max(0, age_in_days), 2)
@@ -1090,96 +1172,45 @@ async def get_batches_by_stage(
     stage: Optional[str] = None,
     user: User = Depends(require_supply_chain_roles)
 ):
-    """Get all batches filtered by stage and current user responsibility"""
-    logger.info(f"Getting batches by stage for user: {user.username} ({user.role}), stage filter: {stage}")
+    """Get all batches filtered by stage and current user responsibility - Optimized"""
     try:
         all_batches = await blockchain_service.get_all_batches()
-        logger.info(f"Total batches available: {len(all_batches)}")
-        if all_batches:
-            batch_info = [(b.get("batchId"), b.get("currentStage")) for b in all_batches]
-            logger.info(f"Available batches: {batch_info}")
         
         # Filter by stage if provided
         if stage:
             filtered_batches = [b for b in all_batches if b.get("currentStage") == stage]
             return {"success": True, "data": filtered_batches}
         
-        # For transporter: show only batches they are handling
+        # For transporter: show only In Transit batches
         if user.role == UserRole.TRANSPORTER:
-            try:
-                relevant_batches = []
-                for b in all_batches:
-                    if b.get("currentStage") == "In Transit":
-                        # Check if this user updated it to In Transit
-                        location_history = b.get("locationHistory", [])
-                        if location_history:
-                            # Get the most recent In Transit update
-                            in_transit_updates = [
-                                loc for loc in location_history 
-                                if loc.get("stage") == "In Transit"
-                            ]
-                            if in_transit_updates:
-                                last_update = in_transit_updates[-1]
-                                logger.info(f"Batch {b.get('batchId')}: In Transit by {last_update.get('updatedBy')}, current user: {user.username}")
-                                if last_update.get("updatedBy") == user.username:
-                                    relevant_batches.append(b)
-                
-                # If no batches found with strict filtering, show ALL batches that can be transported
-                if not relevant_batches:
-                    logger.warning(f"No batches found for transporter {user.username} with strict filtering")
-                    # Show batches in Created, Harvested, or In Transit stages (available for transport)
-                    relevant_batches = [
-                        b for b in all_batches 
-                        if b.get("currentStage") in ["Created", "Harvested", "In Transit"]
-                    ]
-                    logger.info(f"Fallback: showing {len(relevant_batches)} batches available for transport")
-                
-                logger.info(f"Returning {len(relevant_batches)} batches for transporter {user.username}")
-                if relevant_batches:
-                    returned_ids = [b.get("batchId") for b in relevant_batches]
-                    logger.info(f"Batch IDs being returned: {returned_ids}")
-                return {"success": True, "data": relevant_batches}
-            except Exception as e:
-                logger.error(f"Error filtering transporter batches: {e}", exc_info=True)
-                # Return all batches as fallback on error
-                return {"success": True, "data": all_batches}
-        
-        # For retailer: show only batches they are handling
-        if user.role == UserRole.RETAILER:
-            relevant_batches = []
-            for b in all_batches:
-                current_stage = b.get("currentStage")
-                if current_stage in ["At Retailer", "Selling"]:
-                    location_history = b.get("locationHistory", [])
-                    if location_history:
-                        # Get the most recent update for current stage
-                        stage_updates = [
-                            loc for loc in location_history 
-                            if loc.get("stage") == current_stage
-                        ]
-                        if stage_updates:
-                            last_update = stage_updates[-1]
-                            logger.info(f"Batch {b.get('batchId')}: {current_stage} by {last_update.get('updatedBy')}, current user: {user.username}")
-                            if last_update.get("updatedBy") == user.username:
-                                relevant_batches.append(b)
-            
-            # If no batches found with strict filtering, show ALL batches ready for retail
-            if not relevant_batches:
-                logger.warning(f"No batches found for retailer {user.username} with strict filtering")
-                # Show batches in In Transit, At Retailer, or Selling (available for retail)
-                relevant_batches = [
-                    b for b in all_batches 
-                    if b.get("currentStage") in ["In Transit", "At Retailer", "Selling"]
-                ]
-                logger.info(f"Fallback: showing {len(relevant_batches)} batches available for retail")
-            
-            logger.info(f"Returning {len(relevant_batches)} batches for retailer {user.username}")
+            relevant_batches = [
+                b for b in all_batches 
+                if b.get("currentStage") == "In Transit"
+            ]
             return {"success": True, "data": relevant_batches}
         
-        # For producer/admin: show all
+        # For retailer: show only At Retailer batches
+        if user.role == UserRole.RETAILER:
+            relevant_batches = [
+                b for b in all_batches 
+                if b.get("currentStage") == "At Retailer"
+            ]
+            return {"success": True, "data": relevant_batches}
+        
+        # For producer: show batches they created
+        if user.role == UserRole.PRODUCER:
+            relevant_batches = [
+                b for b in all_batches 
+                if b.get("currentStage") in ["Created", "Harvested"]
+            ]
+            return {"success": True, "data": relevant_batches}
+        
+        # Default: return all batches
         return {"success": True, "data": all_batches}
+        
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to fetch batches: {str(e)}")
+        logger.error(f"Error getting batches by stage: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # Admin-only endpoints
@@ -1231,9 +1262,35 @@ async def admin_create_batch_with_metamask(request: CreateBatchRequest, user: Us
             product_type=request.productType,
             created_by=user.username,
         )
+        
+        # If sample image provided, process freshness test and store as alert
+        if request.sampleImageBase64:
+            try:
+                from services.ai_service import analyze_freshness
+                analysis_result = await analyze_freshness(request.sampleImageBase64)
+                
+                alert_data = {
+                    "type": "Freshness Scan",
+                    "stage": "Producer",
+                    "score": analysis_result.get("freshness_score", 0),
+                    "category": analysis_result.get("category", "Unknown"),
+                    "confidence": analysis_result.get("confidence", 0),
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
+                
+                encrypted_data = str(alert_data)
+                await svc.report_alert(
+                    batch_id=request.batchId,
+                    alert_type="Freshness Scan",
+                    encrypted_data=encrypted_data,
+                    reported_by=user.username
+                )
+            except Exception as e:
+                logger.warning(f"Sample testing failed but batch created: {str(e)}")
+        
         return {
             "success": True,
-            "message": "Batch created successfully via admin MetaMask",
+            "message": "Batch created successfully via admin MetaMask" + (" with sample test" if request.sampleImageBase64 else ""),
             "transactionHash": tx_hash,
         }
     except HTTPException:

@@ -1,11 +1,12 @@
 import json
 import asyncio
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 from web3 import Web3
 from web3.middleware import geth_poa_middleware
 from eth_account import Account
 import logging
+import time
 
 from config import settings
 
@@ -16,6 +17,23 @@ class BlockchainService:
         self.w3: Optional[Web3] = None
         self.contract = None
         self.system_account = None
+        # Add simple cache for batch data (5 second TTL)
+        self._cache = {}
+        self._cache_ttl = 5  # seconds
+        
+    def _get_cached(self, key: str) -> Optional[Any]:
+        """Get cached value if not expired"""
+        if key in self._cache:
+            value, timestamp = self._cache[key]
+            if time.time() - timestamp < self._cache_ttl:
+                return value
+            else:
+                del self._cache[key]
+        return None
+    
+    def _set_cache(self, key: str, value: Any):
+        """Set cache value with timestamp"""
+        self._cache[key] = (value, time.time())
         
     async def initialize(self):
         """Initialize blockchain connection and load contract"""
@@ -284,69 +302,65 @@ class BlockchainService:
             return None
     
     async def get_all_batches(self) -> List[Dict[str, Any]]:
-        """Get all batches by querying BatchCreated events - optimized version"""
+        """Get all batches by querying BatchCreated events - optimized with caching"""
         try:
-            logger.info("Querying all batches from blockchain events (optimized)...")
+            # Check cache first
+            cached = self._get_cached('all_batches')
+            if cached is not None:
+                logger.info(f"Returning {len(cached)} batches from cache")
+                return cached
+            
+            logger.info("Cache miss - querying batches from blockchain...")
             
             # Get current block number
             current_block = self.w3.eth.block_number
-            logger.info(f"Current block: {current_block}")
             
-            # Use a more targeted approach - check last 10000 blocks in larger chunks
+            # Use a more targeted approach - check last 5000 blocks for better performance
             batches = []
             batch_ids_found = set()
             
-            # Check last 10000 blocks in chunks of 2000 for better performance
-            blocks_to_check = min(10000, current_block)
-            chunk_size = 2000
+            # Reduced to 5000 blocks and larger chunks for faster loading
+            blocks_to_check = min(5000, current_block)
+            chunk_size = 5000  # Query in one go for speed
             
-            for i in range(0, blocks_to_check, chunk_size):
-                from_block = max(0, current_block - blocks_to_check + i)
-                to_block = min(current_block, from_block + chunk_size - 1)
+            from_block = max(0, current_block - blocks_to_check)
+            to_block = current_block
+            
+            try:
+                # Use stateless log queries
+                batch_events = self.contract.events.BatchCreated.get_logs(
+                    fromBlock=from_block,
+                    toBlock=to_block
+                )
                 
-                logger.info(f"Checking blocks {from_block} to {to_block}")
+                logger.info(f"Found {len(batch_events)} BatchCreated events")
                 
-                try:
-                    # Use stateless log queries to avoid expired filters on HTTP providers
-                    batch_events = self.contract.events.BatchCreated.get_logs(
-                        fromBlock=from_block,
-                        toBlock=to_block
-                    )
-                    
-                    logger.info(f"Found {len(batch_events)} BatchCreated events in this chunk")
-                    
-                    for event in batch_events:
-                        batch_id = event['args']['batchId']
-                        if batch_id not in batch_ids_found:
-                            logger.info(f"Processing new batch: {batch_id}")
-                            batch_ids_found.add(batch_id)
+                for event in batch_events:
+                    batch_id = event['args']['batchId']
+                    if batch_id not in batch_ids_found:
+                        batch_ids_found.add(batch_id)
+                        
+                        # Get detailed batch information from the contract
+                        batch_details = await self.get_batch_details(batch_id)
+                        if batch_details:
+                            batches.append(batch_details)
                             
-                            # Get detailed batch information from the contract
-                            batch_details = await self.get_batch_details(batch_id)
-                            if batch_details:
-                                batches.append(batch_details)
-                                logger.info(f"Added batch {batch_id} to results")
-                            else:
-                                logger.warning(f"Could not get details for batch {batch_id}")
-                        else:
-                            logger.info(f"Batch {batch_id} already processed, skipping duplicate")
-                            
-                except Exception as chunk_error:
-                    logger.warning(f"Error querying blocks {from_block}-{to_block}: {chunk_error}")
-                    continue
+            except Exception as query_error:
+                logger.warning(f"Error querying blockchain: {query_error}")
             
-            logger.info(f"Event querying complete. Found {len(batches)} unique batches")
+            logger.info(f"Found {len(batches)} unique batches")
             
-            # If we found batches via events, return them immediately for better performance
+            # Cache the results
             if len(batches) > 0:
-                logger.info(f"Returning {len(batches)} batches found via events")
-                for batch in batches:
-                    logger.info(f"  - {batch['batchId']} ({batch['productType']}) - {batch['currentStage']}")
+                self._set_cache('all_batches', batches)
                 return batches
             
-            # Only run fallback if no batches found via events
-            logger.info("No batches found via events, trying fallback method...")
+            # Fallback if needed
+            logger.info("Trying fallback method...")
             fallback_batches = await self._fallback_get_batches_fast()
+            if fallback_batches:
+                self._set_cache('all_batches', fallback_batches)
+            return fallback_batches
             
             logger.info(f"Fallback result: {len(fallback_batches)} unique batches")
             return fallback_batches

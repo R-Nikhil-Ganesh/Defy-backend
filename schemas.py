@@ -48,6 +48,9 @@ class UserInfo(BaseModel):
 class CreateBatchRequest(BaseModel):
     batchId: str = Field(..., description="Unique batch identifier")
     productType: str = Field(..., description="Type of product in the batch")
+    sampleImageBase64: Optional[str] = Field(None, description="Base64 encoded sample image for freshness testing")
+    freshnessScore: Optional[float] = Field(None, description="AI freshness score (0-100)")
+    freshnessCategory: Optional[str] = Field(None, description="Freshness category (Fresh/Moderate/Rotten)")
 
 class UpdateStageRequest(BaseModel):
     batchId: str = Field(..., description="Batch identifier")
