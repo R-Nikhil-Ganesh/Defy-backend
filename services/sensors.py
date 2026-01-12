@@ -175,3 +175,41 @@ class SensorRegistry:
         async with self._lock:
             binding = self._state["sensorLinks"].get(sensor_id)
             return binding.copy() if binding else None
+
+    async def list_sensors(self, sensor_type: Optional[SensorType] = None, owner: Optional[str] = None) -> List[Dict[str, Any]]:
+        """List all registered sensors, optionally filtered by type or owner"""
+        async with self._lock:
+            sensors = []
+            for sensor_id, sensor_data in self._state["sensors"].items():
+                if sensor_type and sensor_data.get("sensorType") != sensor_type.value:
+                    continue
+                if owner and sensor_data.get("owner") != owner:
+                    continue
+                
+                # Check if sensor is currently linked
+                binding = self._state["sensorLinks"].get(sensor_id)
+                sensor_info = sensor_data.copy()
+                sensor_info["isLinked"] = binding is not None
+                sensor_info["currentBatch"] = binding.get("batchId") if binding else None
+                sensors.append(sensor_info)
+            
+            return sensors
+
+    async def list_sensors(self, sensor_type: Optional[SensorType] = None, owner: Optional[str] = None) -> List[Dict[str, Any]]:
+        """List all registered sensors, optionally filtered by type or owner"""
+        async with self._lock:
+            sensors = []
+            for sensor_id, sensor_data in self._state["sensors"].items():
+                if sensor_type and sensor_data.get("sensorType") != sensor_type.value:
+                    continue
+                if owner and sensor_data.get("owner") != owner:
+                    continue
+                
+                # Check if sensor is currently linked
+                binding = self._state["sensorLinks"].get(sensor_id)
+                sensor_info = sensor_data.copy()
+                sensor_info["isLinked"] = binding is not None
+                sensor_info["currentBatch"] = binding.get("batchId") if binding else None
+                sensors.append(sensor_info)
+            
+            return sensors

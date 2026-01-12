@@ -9,10 +9,85 @@
       "owner": "retailer",
       "registeredAt": "2026-01-12T15:17:52.573511Z",
       "lastHeartbeat": "2026-01-12T15:18:35.584476Z"
+    },
+    "SENSOR-T-001": {
+      "sensorId": "SENSOR-T-001",
+      "sensorType": "transporter",
+      "label": null,
+      "vehicleOrStoreId": null,
+      "metadata": {},
+      "owner": "transporter",
+      "registeredAt": "2026-01-12T15:29:08.898733Z",
+      "lastHeartbeat": "2026-01-12T15:29:25.205015Z"
+    },
+    "SENSOR-T-002": {
+      "sensorId": "SENSOR-T-002",
+      "sensorType": "transporter",
+      "label": null,
+      "vehicleOrStoreId": null,
+      "metadata": {},
+      "owner": "transporter",
+      "registeredAt": "2026-01-12T15:29:12.975678Z",
+      "lastHeartbeat": "2026-01-12T15:29:27.241565Z"
+    },
+    "SENSOR-R-001": {
+      "sensorId": "SENSOR-R-001",
+      "sensorType": "retailer",
+      "label": null,
+      "vehicleOrStoreId": null,
+      "metadata": {},
+      "owner": "retailer",
+      "registeredAt": "2026-01-12T15:31:52.228057Z",
+      "lastHeartbeat": "2026-01-12T17:16:36.859208Z"
+    },
+    "SENSOR-R-002": {
+      "sensorId": "SENSOR-R-002",
+      "sensorType": "retailer",
+      "label": null,
+      "vehicleOrStoreId": null,
+      "metadata": {},
+      "owner": "retailer",
+      "registeredAt": "2026-01-12T15:31:56.295233Z",
+      "lastHeartbeat": "2026-01-12T17:16:32.305352Z"
+    },
+    "SENSOR-R-003": {
+      "sensorId": "SENSOR-R-003",
+      "sensorType": "retailer",
+      "label": null,
+      "vehicleOrStoreId": null,
+      "metadata": {},
+      "owner": "retailer",
+      "registeredAt": "2026-01-12T15:32:00.377517Z",
+      "lastHeartbeat": "2026-01-12T17:16:34.333587Z"
     }
   },
-  "sensorLinks": {},
-  "batchLinks": {},
+  "sensorLinks": {
+    "SENSOR-T-001": {
+      "sensorId": "SENSOR-T-001",
+      "batchId": "nikhil",
+      "locationType": "transporter",
+      "linkedBy": "transporter",
+      "linkedAt": "2026-01-12T15:44:01.605258Z"
+    },
+    "SENSOR-T-002": {
+      "sensorId": "SENSOR-T-002",
+      "batchId": "nikhil",
+      "locationType": "transporter",
+      "linkedBy": "transporter",
+      "linkedAt": "2026-01-12T17:14:18.850683Z"
+    }
+  },
+  "batchLinks": {
+    "nikhil": {
+      "transporter": {
+        "sensorId": "SENSOR-T-002",
+        "batchId": "nikhil",
+        "locationType": "transporter",
+        "linkedBy": "transporter",
+        "linkedAt": "2026-01-12T17:14:18.850683Z"
+      }
+    }
+  },
   "readings": {
     "nikhil": [
       {
@@ -22,6 +97,5412 @@
         "temperature": 4.5,
         "humidity": 65.0,
         "capturedAt": "2026-01-12T15:18:35.584476Z",
+        "source": "retailer"
+      }
+    ],
+    "BATCH-001": [
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.64,
+        "humidity": 71.8,
+        "capturedAt": "2026-01-12T16:00:45.114144Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.69,
+        "humidity": 74.51,
+        "capturedAt": "2026-01-12T16:01:02.169415Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.85,
+        "humidity": 75.29,
+        "capturedAt": "2026-01-12T16:01:19.207932Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.78,
+        "humidity": 74.87,
+        "capturedAt": "2026-01-12T16:01:36.239051Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.27,
+        "humidity": 71.45,
+        "capturedAt": "2026-01-12T16:01:53.276105Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.39,
+        "humidity": 71.5,
+        "capturedAt": "2026-01-12T16:02:10.307945Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.82,
+        "humidity": 65.46,
+        "capturedAt": "2026-01-12T16:02:27.360486Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.19,
+        "humidity": 70.95,
+        "capturedAt": "2026-01-12T16:02:44.401306Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.47,
+        "humidity": 66.06,
+        "capturedAt": "2026-01-12T16:03:01.445951Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.63,
+        "humidity": 69.28,
+        "capturedAt": "2026-01-12T16:03:18.490118Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.5,
+        "humidity": 74.98,
+        "capturedAt": "2026-01-12T16:03:35.539021Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.35,
+        "humidity": 72.19,
+        "capturedAt": "2026-01-12T16:03:52.580680Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.36,
+        "humidity": 66.14,
+        "capturedAt": "2026-01-12T16:04:09.624616Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.28,
+        "humidity": 75.28,
+        "capturedAt": "2026-01-12T16:04:26.684765Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.7,
+        "humidity": 76.39,
+        "capturedAt": "2026-01-12T16:04:43.741193Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.92,
+        "humidity": 68.04,
+        "capturedAt": "2026-01-12T16:05:00.763991Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.37,
+        "humidity": 74.44,
+        "capturedAt": "2026-01-12T16:05:17.814815Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.15,
+        "humidity": 69.94,
+        "capturedAt": "2026-01-12T16:05:34.866649Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 10.02,
+        "humidity": 78.54,
+        "capturedAt": "2026-01-12T16:05:51.906601Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.46,
+        "humidity": 65.34,
+        "capturedAt": "2026-01-12T16:06:08.947042Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.0,
+        "humidity": 66.35,
+        "capturedAt": "2026-01-12T16:06:26.007470Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.04,
+        "humidity": 70.89,
+        "capturedAt": "2026-01-12T16:06:43.041988Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.83,
+        "humidity": 65.46,
+        "capturedAt": "2026-01-12T16:07:00.100656Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.69,
+        "humidity": 70.19,
+        "capturedAt": "2026-01-12T16:07:17.131554Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.55,
+        "humidity": 79.28,
+        "capturedAt": "2026-01-12T16:07:34.166815Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.5,
+        "humidity": 75.2,
+        "capturedAt": "2026-01-12T16:07:51.199802Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.7,
+        "humidity": 68.42,
+        "capturedAt": "2026-01-12T16:08:08.259058Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.96,
+        "humidity": 72.9,
+        "capturedAt": "2026-01-12T16:08:25.304588Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 3.73,
+        "humidity": 73.71,
+        "capturedAt": "2026-01-12T16:08:42.342970Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.83,
+        "humidity": 70.5,
+        "capturedAt": "2026-01-12T16:08:59.393307Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.03,
+        "humidity": 71.75,
+        "capturedAt": "2026-01-12T16:09:16.445701Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.85,
+        "humidity": 79.56,
+        "capturedAt": "2026-01-12T16:09:33.494593Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.96,
+        "humidity": 71.96,
+        "capturedAt": "2026-01-12T16:09:50.566051Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.52,
+        "humidity": 74.15,
+        "capturedAt": "2026-01-12T16:10:07.614826Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.92,
+        "humidity": 70.64,
+        "capturedAt": "2026-01-12T16:10:24.669957Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.82,
+        "humidity": 74.94,
+        "capturedAt": "2026-01-12T16:10:41.713421Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.46,
+        "humidity": 65.97,
+        "capturedAt": "2026-01-12T16:10:58.779898Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.99,
+        "humidity": 69.7,
+        "capturedAt": "2026-01-12T16:11:15.844378Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.68,
+        "humidity": 65.05,
+        "capturedAt": "2026-01-12T16:11:32.873945Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.24,
+        "humidity": 70.05,
+        "capturedAt": "2026-01-12T16:11:49.934525Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.71,
+        "humidity": 74.14,
+        "capturedAt": "2026-01-12T16:12:06.988540Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.11,
+        "humidity": 68.51,
+        "capturedAt": "2026-01-12T16:12:24.038958Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.28,
+        "humidity": 66.36,
+        "capturedAt": "2026-01-12T16:12:41.050927Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.7,
+        "humidity": 74.44,
+        "capturedAt": "2026-01-12T16:12:58.077389Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.43,
+        "humidity": 75.27,
+        "capturedAt": "2026-01-12T16:13:15.092112Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.8,
+        "humidity": 77.05,
+        "capturedAt": "2026-01-12T16:13:32.113880Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.66,
+        "humidity": 74.4,
+        "capturedAt": "2026-01-12T16:13:49.155885Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.86,
+        "humidity": 77.77,
+        "capturedAt": "2026-01-12T16:14:06.160584Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.53,
+        "humidity": 68.4,
+        "capturedAt": "2026-01-12T16:14:23.191130Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.65,
+        "humidity": 77.49,
+        "capturedAt": "2026-01-12T16:14:40.230344Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 3.92,
+        "humidity": 79.46,
+        "capturedAt": "2026-01-12T16:15:02.971041Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.13,
+        "humidity": 73.0,
+        "capturedAt": "2026-01-12T16:15:20.023154Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.38,
+        "humidity": 71.16,
+        "capturedAt": "2026-01-12T16:15:37.095104Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.63,
+        "humidity": 72.16,
+        "capturedAt": "2026-01-12T16:15:54.116778Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.98,
+        "humidity": 71.28,
+        "capturedAt": "2026-01-12T16:16:11.129581Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.02,
+        "humidity": 70.68,
+        "capturedAt": "2026-01-12T16:16:28.169655Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.94,
+        "humidity": 68.45,
+        "capturedAt": "2026-01-12T16:16:45.215025Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.59,
+        "humidity": 74.37,
+        "capturedAt": "2026-01-12T16:17:02.261501Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.24,
+        "humidity": 73.06,
+        "capturedAt": "2026-01-12T16:17:19.295172Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 3.61,
+        "humidity": 71.97,
+        "capturedAt": "2026-01-12T16:17:36.328985Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.23,
+        "humidity": 69.7,
+        "capturedAt": "2026-01-12T16:17:53.377238Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.44,
+        "humidity": 68.98,
+        "capturedAt": "2026-01-12T16:18:10.423577Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.7,
+        "humidity": 73.82,
+        "capturedAt": "2026-01-12T16:18:33.932808Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.95,
+        "humidity": 76.44,
+        "capturedAt": "2026-01-12T16:18:50.966827Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.4,
+        "humidity": 79.5,
+        "capturedAt": "2026-01-12T16:19:08.008936Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.15,
+        "humidity": 72.7,
+        "capturedAt": "2026-01-12T16:19:44.104661Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.61,
+        "humidity": 72.38,
+        "capturedAt": "2026-01-12T16:20:01.155979Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.69,
+        "humidity": 69.26,
+        "capturedAt": "2026-01-12T16:20:18.189774Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.96,
+        "humidity": 76.61,
+        "capturedAt": "2026-01-12T16:20:54.302495Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.46,
+        "humidity": 72.06,
+        "capturedAt": "2026-01-12T16:21:11.373438Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.37,
+        "humidity": 79.61,
+        "capturedAt": "2026-01-12T16:21:28.440404Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 11.52,
+        "humidity": 68.21,
+        "capturedAt": "2026-01-12T16:21:45.521584Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.73,
+        "humidity": 69.68,
+        "capturedAt": "2026-01-12T16:22:02.585249Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.08,
+        "humidity": 79.9,
+        "capturedAt": "2026-01-12T16:22:19.658959Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.18,
+        "humidity": 70.94,
+        "capturedAt": "2026-01-12T16:22:36.717913Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.64,
+        "humidity": 79.53,
+        "capturedAt": "2026-01-12T16:22:53.779858Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.23,
+        "humidity": 66.3,
+        "capturedAt": "2026-01-12T16:23:10.845939Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.77,
+        "humidity": 76.78,
+        "capturedAt": "2026-01-12T16:23:27.907181Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.19,
+        "humidity": 65.97,
+        "capturedAt": "2026-01-12T16:23:44.950610Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.56,
+        "humidity": 76.26,
+        "capturedAt": "2026-01-12T16:24:01.993225Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.85,
+        "humidity": 78.4,
+        "capturedAt": "2026-01-12T16:24:19.034902Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.81,
+        "humidity": 62.9,
+        "capturedAt": "2026-01-12T16:24:36.102295Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.34,
+        "humidity": 72.75,
+        "capturedAt": "2026-01-12T16:24:53.154392Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.51,
+        "humidity": 68.82,
+        "capturedAt": "2026-01-12T16:25:10.231067Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.71,
+        "humidity": 74.82,
+        "capturedAt": "2026-01-12T16:25:27.312621Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.31,
+        "humidity": 78.11,
+        "capturedAt": "2026-01-12T16:25:44.390092Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.09,
+        "humidity": 79.37,
+        "capturedAt": "2026-01-12T16:26:01.456499Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.27,
+        "humidity": 77.81,
+        "capturedAt": "2026-01-12T16:26:18.540348Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 10.45,
+        "humidity": 62.0,
+        "capturedAt": "2026-01-12T16:26:35.603586Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.5,
+        "humidity": 74.52,
+        "capturedAt": "2026-01-12T16:26:52.650112Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.32,
+        "humidity": 70.88,
+        "capturedAt": "2026-01-12T16:27:09.683195Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.47,
+        "humidity": 78.86,
+        "capturedAt": "2026-01-12T16:27:26.703855Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.73,
+        "humidity": 76.41,
+        "capturedAt": "2026-01-12T16:27:43.739189Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.2,
+        "humidity": 65.42,
+        "capturedAt": "2026-01-12T16:28:00.777097Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.02,
+        "humidity": 71.48,
+        "capturedAt": "2026-01-12T16:28:17.808921Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.55,
+        "humidity": 78.4,
+        "capturedAt": "2026-01-12T16:28:34.848179Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.24,
+        "humidity": 71.7,
+        "capturedAt": "2026-01-12T16:28:51.883905Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.1,
+        "humidity": 75.48,
+        "capturedAt": "2026-01-12T16:29:08.927753Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 3.89,
+        "humidity": 76.38,
+        "capturedAt": "2026-01-12T16:29:25.945327Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.16,
+        "humidity": 74.42,
+        "capturedAt": "2026-01-12T16:29:43.001290Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.83,
+        "humidity": 79.64,
+        "capturedAt": "2026-01-12T16:30:00.053222Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.0,
+        "humidity": 79.91,
+        "capturedAt": "2026-01-12T16:30:17.079206Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 3.92,
+        "humidity": 65.25,
+        "capturedAt": "2026-01-12T16:30:34.135129Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.23,
+        "humidity": 71.61,
+        "capturedAt": "2026-01-12T16:30:51.199934Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.9,
+        "humidity": 69.25,
+        "capturedAt": "2026-01-12T16:31:08.274920Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.28,
+        "humidity": 70.67,
+        "capturedAt": "2026-01-12T16:31:25.350392Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.57,
+        "humidity": 70.96,
+        "capturedAt": "2026-01-12T16:31:42.429446Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.93,
+        "humidity": 73.59,
+        "capturedAt": "2026-01-12T16:31:59.504965Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.09,
+        "humidity": 73.76,
+        "capturedAt": "2026-01-12T16:32:16.591629Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.09,
+        "humidity": 75.08,
+        "capturedAt": "2026-01-12T16:32:33.648536Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.39,
+        "humidity": 76.98,
+        "capturedAt": "2026-01-12T16:32:50.726391Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.68,
+        "humidity": 68.06,
+        "capturedAt": "2026-01-12T16:33:07.803749Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.74,
+        "humidity": 73.01,
+        "capturedAt": "2026-01-12T16:33:24.892332Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 10.59,
+        "humidity": 66.36,
+        "capturedAt": "2026-01-12T16:33:41.965578Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.28,
+        "humidity": 75.63,
+        "capturedAt": "2026-01-12T16:33:59.032089Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.75,
+        "humidity": 73.04,
+        "capturedAt": "2026-01-12T16:34:16.123552Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.1,
+        "humidity": 71.74,
+        "capturedAt": "2026-01-12T16:34:33.189135Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.41,
+        "humidity": 71.95,
+        "capturedAt": "2026-01-12T16:34:50.278480Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.57,
+        "humidity": 79.67,
+        "capturedAt": "2026-01-12T16:35:07.346852Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.94,
+        "humidity": 74.31,
+        "capturedAt": "2026-01-12T16:35:24.413661Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.12,
+        "humidity": 78.34,
+        "capturedAt": "2026-01-12T16:35:41.472226Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 74.82,
+        "capturedAt": "2026-01-12T16:35:58.548723Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.0,
+        "humidity": 71.3,
+        "capturedAt": "2026-01-12T16:36:15.612299Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.62,
+        "humidity": 78.63,
+        "capturedAt": "2026-01-12T16:36:32.687493Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 3.56,
+        "humidity": 76.13,
+        "capturedAt": "2026-01-12T16:36:49.766524Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.54,
+        "humidity": 66.72,
+        "capturedAt": "2026-01-12T16:37:06.860555Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.94,
+        "humidity": 74.43,
+        "capturedAt": "2026-01-12T16:37:23.926175Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.62,
+        "humidity": 79.14,
+        "capturedAt": "2026-01-12T16:37:41.004511Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.71,
+        "humidity": 68.35,
+        "capturedAt": "2026-01-12T16:37:58.095963Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.19,
+        "humidity": 76.47,
+        "capturedAt": "2026-01-12T16:38:15.188800Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.31,
+        "humidity": 78.86,
+        "capturedAt": "2026-01-12T16:38:32.265466Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.03,
+        "humidity": 67.27,
+        "capturedAt": "2026-01-12T16:38:49.341292Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.93,
+        "humidity": 62.05,
+        "capturedAt": "2026-01-12T16:39:06.411523Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.35,
+        "humidity": 71.18,
+        "capturedAt": "2026-01-12T16:39:23.448615Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.26,
+        "humidity": 67.61,
+        "capturedAt": "2026-01-12T16:39:40.513373Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.26,
+        "humidity": 69.36,
+        "capturedAt": "2026-01-12T16:39:57.569176Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.45,
+        "humidity": 67.27,
+        "capturedAt": "2026-01-12T16:40:14.601971Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.17,
+        "humidity": 78.56,
+        "capturedAt": "2026-01-12T16:40:31.625815Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 11.21,
+        "humidity": 74.23,
+        "capturedAt": "2026-01-12T16:40:48.678331Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.48,
+        "humidity": 76.28,
+        "capturedAt": "2026-01-12T16:41:05.739138Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.01,
+        "humidity": 78.97,
+        "capturedAt": "2026-01-12T16:41:22.779828Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.45,
+        "humidity": 75.53,
+        "capturedAt": "2026-01-12T16:41:39.828622Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.86,
+        "humidity": 65.66,
+        "capturedAt": "2026-01-12T16:41:56.885355Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.12,
+        "humidity": 76.32,
+        "capturedAt": "2026-01-12T16:42:13.917616Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.08,
+        "humidity": 74.31,
+        "capturedAt": "2026-01-12T16:42:30.993410Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.12,
+        "humidity": 62.27,
+        "capturedAt": "2026-01-12T16:42:48.053446Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.14,
+        "humidity": 68.87,
+        "capturedAt": "2026-01-12T16:43:05.117597Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 11.15,
+        "humidity": 64.4,
+        "capturedAt": "2026-01-12T16:43:22.173115Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.52,
+        "humidity": 78.14,
+        "capturedAt": "2026-01-12T16:43:39.216627Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.46,
+        "humidity": 65.58,
+        "capturedAt": "2026-01-12T16:43:56.264781Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.31,
+        "humidity": 79.06,
+        "capturedAt": "2026-01-12T16:44:13.286327Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.74,
+        "humidity": 79.98,
+        "capturedAt": "2026-01-12T16:44:30.329666Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.35,
+        "humidity": 79.15,
+        "capturedAt": "2026-01-12T16:44:47.364404Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 10.74,
+        "humidity": 69.88,
+        "capturedAt": "2026-01-12T16:45:04.432693Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.78,
+        "humidity": 68.7,
+        "capturedAt": "2026-01-12T16:45:21.505775Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.88,
+        "humidity": 70.71,
+        "capturedAt": "2026-01-12T16:45:38.541274Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.76,
+        "humidity": 68.86,
+        "capturedAt": "2026-01-12T16:45:55.571591Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.58,
+        "humidity": 72.76,
+        "capturedAt": "2026-01-12T16:46:12.627715Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.39,
+        "humidity": 75.95,
+        "capturedAt": "2026-01-12T16:46:29.681853Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 10.33,
+        "humidity": 74.29,
+        "capturedAt": "2026-01-12T16:46:46.720189Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.06,
+        "humidity": 75.58,
+        "capturedAt": "2026-01-12T16:47:03.764804Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.73,
+        "humidity": 75.15,
+        "capturedAt": "2026-01-12T16:47:20.796760Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.27,
+        "humidity": 66.73,
+        "capturedAt": "2026-01-12T16:47:37.838552Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.61,
+        "humidity": 66.36,
+        "capturedAt": "2026-01-12T16:47:54.862179Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.91,
+        "humidity": 77.06,
+        "capturedAt": "2026-01-12T16:48:11.932391Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.53,
+        "humidity": 76.31,
+        "capturedAt": "2026-01-12T16:48:28.980217Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.76,
+        "humidity": 74.28,
+        "capturedAt": "2026-01-12T16:48:46.029303Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.2,
+        "humidity": 76.01,
+        "capturedAt": "2026-01-12T16:49:03.075806Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.16,
+        "humidity": 76.81,
+        "capturedAt": "2026-01-12T16:49:20.123213Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.25,
+        "humidity": 74.21,
+        "capturedAt": "2026-01-12T16:49:37.166623Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.88,
+        "humidity": 69.07,
+        "capturedAt": "2026-01-12T16:49:54.208208Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.85,
+        "humidity": 66.66,
+        "capturedAt": "2026-01-12T16:50:11.256103Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.9,
+        "humidity": 79.59,
+        "capturedAt": "2026-01-12T16:50:28.300884Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.83,
+        "humidity": 78.94,
+        "capturedAt": "2026-01-12T16:50:45.340887Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.05,
+        "humidity": 69.02,
+        "capturedAt": "2026-01-12T16:51:02.400692Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.3,
+        "humidity": 78.16,
+        "capturedAt": "2026-01-12T16:51:19.442298Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.86,
+        "humidity": 74.82,
+        "capturedAt": "2026-01-12T16:51:36.490504Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.18,
+        "humidity": 78.55,
+        "capturedAt": "2026-01-12T16:51:53.531158Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.4,
+        "humidity": 78.28,
+        "capturedAt": "2026-01-12T16:52:10.577946Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.17,
+        "humidity": 73.07,
+        "capturedAt": "2026-01-12T16:52:27.648225Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.43,
+        "humidity": 67.69,
+        "capturedAt": "2026-01-12T16:52:44.705584Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.47,
+        "humidity": 69.66,
+        "capturedAt": "2026-01-12T16:53:01.748468Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.09,
+        "humidity": 74.74,
+        "capturedAt": "2026-01-12T16:53:18.789070Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.31,
+        "humidity": 65.83,
+        "capturedAt": "2026-01-12T17:09:32.719401Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.6,
+        "humidity": 66.94,
+        "capturedAt": "2026-01-12T17:09:49.781567Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.97,
+        "humidity": 72.39,
+        "capturedAt": "2026-01-12T17:10:06.825926Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.54,
+        "humidity": 66.16,
+        "capturedAt": "2026-01-12T17:10:23.905840Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.73,
+        "humidity": 77.79,
+        "capturedAt": "2026-01-12T17:11:14.292576Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.86,
+        "humidity": 73.64,
+        "capturedAt": "2026-01-12T17:12:06.222833Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 8.38,
+        "humidity": 73.68,
+        "capturedAt": "2026-01-12T17:12:25.250093Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.66,
+        "humidity": 70.56,
+        "capturedAt": "2026-01-12T17:12:42.323456Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.95,
+        "humidity": 74.3,
+        "capturedAt": "2026-01-12T17:12:59.380010Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 4.31,
+        "humidity": 79.14,
+        "capturedAt": "2026-01-12T17:13:16.480363Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 6.56,
+        "humidity": 77.41,
+        "capturedAt": "2026-01-12T17:13:33.493132Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.7,
+        "humidity": 70.53,
+        "capturedAt": "2026-01-12T17:13:50.556402Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.73,
+        "humidity": 77.59,
+        "capturedAt": "2026-01-12T17:14:07.594492Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 5.63,
+        "humidity": 77.35,
+        "capturedAt": "2026-01-12T17:15:45.753382Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.68,
+        "humidity": 65.21,
+        "capturedAt": "2026-01-12T17:16:02.789154Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 7.69,
+        "humidity": 69.76,
+        "capturedAt": "2026-01-12T17:16:19.830457Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-001",
+        "sensorId": "SENSOR-R-001",
+        "sensorType": "retailer",
+        "temperature": 9.35,
+        "humidity": 78.07,
+        "capturedAt": "2026-01-12T17:16:36.859208Z",
+        "source": "retailer"
+      }
+    ],
+    "BATCH-002": [
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.92,
+        "humidity": 71.22,
+        "capturedAt": "2026-01-12T16:00:13.030059Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.24,
+        "humidity": 78.4,
+        "capturedAt": "2026-01-12T16:00:30.096813Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.32,
+        "humidity": 69.88,
+        "capturedAt": "2026-01-12T16:00:47.159018Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.76,
+        "humidity": 69.16,
+        "capturedAt": "2026-01-12T16:01:04.227120Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.97,
+        "humidity": 76.69,
+        "capturedAt": "2026-01-12T16:01:21.259977Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.02,
+        "humidity": 74.15,
+        "capturedAt": "2026-01-12T16:01:38.307885Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.23,
+        "humidity": 71.85,
+        "capturedAt": "2026-01-12T16:01:55.335824Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.26,
+        "humidity": 70.27,
+        "capturedAt": "2026-01-12T16:02:12.377102Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.33,
+        "humidity": 73.41,
+        "capturedAt": "2026-01-12T16:02:29.430759Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.04,
+        "humidity": 68.85,
+        "capturedAt": "2026-01-12T16:02:46.448522Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.82,
+        "humidity": 76.68,
+        "capturedAt": "2026-01-12T16:03:03.494387Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.86,
+        "humidity": 76.37,
+        "capturedAt": "2026-01-12T16:03:20.529031Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.13,
+        "humidity": 70.93,
+        "capturedAt": "2026-01-12T16:03:37.578455Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.93,
+        "humidity": 78.75,
+        "capturedAt": "2026-01-12T16:03:54.609786Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.61,
+        "humidity": 72.62,
+        "capturedAt": "2026-01-12T16:04:11.662201Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.94,
+        "humidity": 75.34,
+        "capturedAt": "2026-01-12T16:04:28.715443Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.06,
+        "humidity": 72.2,
+        "capturedAt": "2026-01-12T16:04:45.800881Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 77.71,
+        "capturedAt": "2026-01-12T16:05:02.842746Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.34,
+        "humidity": 75.59,
+        "capturedAt": "2026-01-12T16:05:19.870280Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.53,
+        "humidity": 77.04,
+        "capturedAt": "2026-01-12T16:05:36.899777Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.04,
+        "humidity": 78.38,
+        "capturedAt": "2026-01-12T16:05:53.948491Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.79,
+        "humidity": 77.63,
+        "capturedAt": "2026-01-12T16:06:10.985931Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.27,
+        "humidity": 76.35,
+        "capturedAt": "2026-01-12T16:06:28.059746Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.97,
+        "humidity": 69.16,
+        "capturedAt": "2026-01-12T16:06:45.105331Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.43,
+        "humidity": 69.9,
+        "capturedAt": "2026-01-12T16:07:02.145473Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.35,
+        "humidity": 78.85,
+        "capturedAt": "2026-01-12T16:07:19.202054Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.84,
+        "humidity": 69.48,
+        "capturedAt": "2026-01-12T16:07:36.239070Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.33,
+        "humidity": 76.21,
+        "capturedAt": "2026-01-12T16:07:53.283550Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.53,
+        "humidity": 66.19,
+        "capturedAt": "2026-01-12T16:08:10.318882Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.04,
+        "humidity": 67.65,
+        "capturedAt": "2026-01-12T16:08:27.354270Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.37,
+        "humidity": 64.41,
+        "capturedAt": "2026-01-12T16:08:44.388197Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.36,
+        "humidity": 65.45,
+        "capturedAt": "2026-01-12T16:09:01.439036Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.83,
+        "humidity": 71.21,
+        "capturedAt": "2026-01-12T16:09:18.476558Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.37,
+        "humidity": 75.97,
+        "capturedAt": "2026-01-12T16:09:35.527101Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.04,
+        "humidity": 76.68,
+        "capturedAt": "2026-01-12T16:09:52.603482Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.11,
+        "humidity": 68.13,
+        "capturedAt": "2026-01-12T16:10:09.646510Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.0,
+        "humidity": 78.8,
+        "capturedAt": "2026-01-12T16:10:26.716339Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.15,
+        "humidity": 70.8,
+        "capturedAt": "2026-01-12T16:10:43.748241Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 3.95,
+        "humidity": 68.9,
+        "capturedAt": "2026-01-12T16:11:00.808608Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.79,
+        "humidity": 75.44,
+        "capturedAt": "2026-01-12T16:11:17.884826Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.09,
+        "humidity": 68.04,
+        "capturedAt": "2026-01-12T16:11:34.931462Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.01,
+        "humidity": 70.97,
+        "capturedAt": "2026-01-12T16:11:51.983632Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.13,
+        "humidity": 65.57,
+        "capturedAt": "2026-01-12T16:12:09.025064Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.31,
+        "humidity": 66.5,
+        "capturedAt": "2026-01-12T16:12:26.076773Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.81,
+        "humidity": 72.36,
+        "capturedAt": "2026-01-12T16:12:52.626252Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.6,
+        "humidity": 77.1,
+        "capturedAt": "2026-01-12T16:13:09.668019Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.17,
+        "humidity": 65.7,
+        "capturedAt": "2026-01-12T16:13:26.710253Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.17,
+        "humidity": 77.49,
+        "capturedAt": "2026-01-12T16:13:43.757283Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.46,
+        "humidity": 75.17,
+        "capturedAt": "2026-01-12T16:14:00.800804Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.71,
+        "humidity": 67.87,
+        "capturedAt": "2026-01-12T16:14:17.835834Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.41,
+        "humidity": 69.64,
+        "capturedAt": "2026-01-12T16:14:34.876235Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.74,
+        "humidity": 74.76,
+        "capturedAt": "2026-01-12T16:14:51.904551Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.17,
+        "humidity": 71.55,
+        "capturedAt": "2026-01-12T16:15:08.945101Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.09,
+        "humidity": 74.28,
+        "capturedAt": "2026-01-12T16:15:25.984467Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.17,
+        "humidity": 72.07,
+        "capturedAt": "2026-01-12T16:15:43.024568Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.96,
+        "humidity": 66.0,
+        "capturedAt": "2026-01-12T16:16:00.062431Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.56,
+        "humidity": 79.11,
+        "capturedAt": "2026-01-12T16:16:17.125328Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.11,
+        "humidity": 67.71,
+        "capturedAt": "2026-01-12T16:16:34.165244Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.02,
+        "humidity": 67.63,
+        "capturedAt": "2026-01-12T16:16:51.201077Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.1,
+        "humidity": 74.74,
+        "capturedAt": "2026-01-12T16:17:08.266617Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.52,
+        "humidity": 74.0,
+        "capturedAt": "2026-01-12T16:17:25.315767Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.75,
+        "humidity": 71.51,
+        "capturedAt": "2026-01-12T16:17:42.350026Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.42,
+        "humidity": 74.29,
+        "capturedAt": "2026-01-12T16:17:59.378658Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.08,
+        "humidity": 76.31,
+        "capturedAt": "2026-01-12T16:18:16.410875Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.32,
+        "humidity": 76.36,
+        "capturedAt": "2026-01-12T16:18:35.967956Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.44,
+        "humidity": 75.55,
+        "capturedAt": "2026-01-12T16:18:53.011689Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.3,
+        "humidity": 74.85,
+        "capturedAt": "2026-01-12T16:19:10.057652Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.02,
+        "humidity": 74.92,
+        "capturedAt": "2026-01-12T16:19:48.152787Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.76,
+        "humidity": 79.3,
+        "capturedAt": "2026-01-12T16:20:05.202485Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.97,
+        "humidity": 76.65,
+        "capturedAt": "2026-01-12T16:20:41.350908Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.72,
+        "humidity": 71.0,
+        "capturedAt": "2026-01-12T16:20:58.421821Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.76,
+        "humidity": 71.67,
+        "capturedAt": "2026-01-12T16:21:15.470628Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.5,
+        "humidity": 67.63,
+        "capturedAt": "2026-01-12T16:21:32.531650Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.26,
+        "humidity": 65.17,
+        "capturedAt": "2026-01-12T16:21:49.579356Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.6,
+        "humidity": 78.43,
+        "capturedAt": "2026-01-12T16:22:06.656680Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.51,
+        "humidity": 74.61,
+        "capturedAt": "2026-01-12T16:22:23.731210Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.65,
+        "humidity": 69.56,
+        "capturedAt": "2026-01-12T16:22:40.797352Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.84,
+        "humidity": 76.96,
+        "capturedAt": "2026-01-12T16:22:57.853882Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.02,
+        "humidity": 77.3,
+        "capturedAt": "2026-01-12T16:23:14.927234Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.22,
+        "humidity": 77.55,
+        "capturedAt": "2026-01-12T16:23:31.985658Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.68,
+        "humidity": 73.94,
+        "capturedAt": "2026-01-12T16:23:49.027489Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.57,
+        "humidity": 74.77,
+        "capturedAt": "2026-01-12T16:24:06.063479Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.81,
+        "humidity": 65.45,
+        "capturedAt": "2026-01-12T16:24:23.105069Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 66.67,
+        "capturedAt": "2026-01-12T16:24:40.163587Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.91,
+        "humidity": 71.76,
+        "capturedAt": "2026-01-12T16:24:57.217943Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.56,
+        "humidity": 74.78,
+        "capturedAt": "2026-01-12T16:25:14.278488Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.17,
+        "humidity": 79.61,
+        "capturedAt": "2026-01-12T16:25:31.347488Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.8,
+        "humidity": 68.81,
+        "capturedAt": "2026-01-12T16:25:48.449784Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 11.69,
+        "humidity": 63.33,
+        "capturedAt": "2026-01-12T16:26:05.521733Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.28,
+        "humidity": 76.01,
+        "capturedAt": "2026-01-12T16:26:22.589612Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.76,
+        "humidity": 66.35,
+        "capturedAt": "2026-01-12T16:26:39.653812Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.27,
+        "humidity": 65.37,
+        "capturedAt": "2026-01-12T16:26:56.701683Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.11,
+        "humidity": 73.55,
+        "capturedAt": "2026-01-12T16:27:13.731447Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.24,
+        "humidity": 69.23,
+        "capturedAt": "2026-01-12T16:27:30.761652Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.21,
+        "humidity": 68.36,
+        "capturedAt": "2026-01-12T16:27:47.809516Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.86,
+        "humidity": 78.87,
+        "capturedAt": "2026-01-12T16:28:04.845400Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.9,
+        "humidity": 77.82,
+        "capturedAt": "2026-01-12T16:28:21.898257Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.2,
+        "humidity": 74.39,
+        "capturedAt": "2026-01-12T16:28:38.936807Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.38,
+        "humidity": 68.27,
+        "capturedAt": "2026-01-12T16:28:55.975297Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.63,
+        "humidity": 76.1,
+        "capturedAt": "2026-01-12T16:29:12.997523Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.7,
+        "humidity": 66.56,
+        "capturedAt": "2026-01-12T16:29:30.039258Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.58,
+        "humidity": 76.36,
+        "capturedAt": "2026-01-12T16:29:47.078760Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.01,
+        "humidity": 68.2,
+        "capturedAt": "2026-01-12T16:30:04.136136Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.02,
+        "humidity": 74.48,
+        "capturedAt": "2026-01-12T16:30:21.182618Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.15,
+        "humidity": 74.31,
+        "capturedAt": "2026-01-12T16:30:38.244158Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.49,
+        "humidity": 70.65,
+        "capturedAt": "2026-01-12T16:30:55.327061Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.6,
+        "humidity": 66.88,
+        "capturedAt": "2026-01-12T16:31:12.401048Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.57,
+        "humidity": 70.06,
+        "capturedAt": "2026-01-12T16:31:29.462039Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.01,
+        "humidity": 70.88,
+        "capturedAt": "2026-01-12T16:31:46.544064Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.41,
+        "humidity": 65.08,
+        "capturedAt": "2026-01-12T16:32:03.605508Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.96,
+        "humidity": 70.54,
+        "capturedAt": "2026-01-12T16:32:20.683798Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.58,
+        "humidity": 72.18,
+        "capturedAt": "2026-01-12T16:32:37.719882Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.9,
+        "humidity": 70.65,
+        "capturedAt": "2026-01-12T16:32:54.798530Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.0,
+        "humidity": 77.19,
+        "capturedAt": "2026-01-12T16:33:11.821261Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.12,
+        "humidity": 74.62,
+        "capturedAt": "2026-01-12T16:33:28.888767Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.49,
+        "humidity": 76.42,
+        "capturedAt": "2026-01-12T16:33:45.975305Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.31,
+        "humidity": 73.04,
+        "capturedAt": "2026-01-12T16:34:03.042647Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.49,
+        "humidity": 76.97,
+        "capturedAt": "2026-01-12T16:34:20.111215Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.84,
+        "humidity": 65.87,
+        "capturedAt": "2026-01-12T16:34:37.169026Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.79,
+        "humidity": 79.29,
+        "capturedAt": "2026-01-12T16:34:54.243714Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.83,
+        "humidity": 71.19,
+        "capturedAt": "2026-01-12T16:35:11.315480Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.16,
+        "humidity": 72.33,
+        "capturedAt": "2026-01-12T16:35:28.397530Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.39,
+        "humidity": 74.9,
+        "capturedAt": "2026-01-12T16:35:45.474809Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.3,
+        "humidity": 77.5,
+        "capturedAt": "2026-01-12T16:36:02.549004Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.88,
+        "humidity": 66.01,
+        "capturedAt": "2026-01-12T16:36:19.616591Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.87,
+        "humidity": 75.12,
+        "capturedAt": "2026-01-12T16:36:36.675162Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.78,
+        "humidity": 65.17,
+        "capturedAt": "2026-01-12T16:36:53.712733Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.83,
+        "humidity": 75.81,
+        "capturedAt": "2026-01-12T16:37:12.843911Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.74,
+        "humidity": 76.69,
+        "capturedAt": "2026-01-12T16:37:29.899923Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.96,
+        "humidity": 72.61,
+        "capturedAt": "2026-01-12T16:37:46.970454Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.01,
+        "humidity": 67.85,
+        "capturedAt": "2026-01-12T16:38:04.034579Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.21,
+        "humidity": 74.81,
+        "capturedAt": "2026-01-12T16:38:21.104075Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.19,
+        "humidity": 65.35,
+        "capturedAt": "2026-01-12T16:38:38.167127Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.52,
+        "humidity": 66.39,
+        "capturedAt": "2026-01-12T16:38:55.246107Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.25,
+        "humidity": 74.41,
+        "capturedAt": "2026-01-12T16:39:12.288344Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.99,
+        "humidity": 76.0,
+        "capturedAt": "2026-01-12T16:39:29.352772Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.78,
+        "humidity": 67.19,
+        "capturedAt": "2026-01-12T16:39:46.395259Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.96,
+        "humidity": 68.83,
+        "capturedAt": "2026-01-12T16:40:03.439803Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.13,
+        "humidity": 75.97,
+        "capturedAt": "2026-01-12T16:40:24.954588Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.02,
+        "humidity": 70.21,
+        "capturedAt": "2026-01-12T16:40:42.017074Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.43,
+        "humidity": 76.48,
+        "capturedAt": "2026-01-12T16:40:59.067967Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.64,
+        "humidity": 69.0,
+        "capturedAt": "2026-01-12T16:41:16.113245Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.14,
+        "humidity": 79.22,
+        "capturedAt": "2026-01-12T16:41:33.134117Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.56,
+        "humidity": 71.23,
+        "capturedAt": "2026-01-12T16:41:50.167777Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.76,
+        "humidity": 78.29,
+        "capturedAt": "2026-01-12T16:42:07.217504Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.71,
+        "humidity": 77.51,
+        "capturedAt": "2026-01-12T16:42:24.268391Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.2,
+        "humidity": 70.96,
+        "capturedAt": "2026-01-12T16:42:41.300503Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.86,
+        "humidity": 72.16,
+        "capturedAt": "2026-01-12T16:42:58.361612Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.65,
+        "humidity": 69.94,
+        "capturedAt": "2026-01-12T16:43:15.420265Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.56,
+        "humidity": 66.34,
+        "capturedAt": "2026-01-12T16:43:32.494155Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.61,
+        "humidity": 74.91,
+        "capturedAt": "2026-01-12T16:43:49.565774Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.44,
+        "humidity": 65.25,
+        "capturedAt": "2026-01-12T16:44:06.622391Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.26,
+        "humidity": 72.04,
+        "capturedAt": "2026-01-12T16:44:23.664060Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.87,
+        "humidity": 70.25,
+        "capturedAt": "2026-01-12T16:44:40.699351Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.0,
+        "humidity": 79.72,
+        "capturedAt": "2026-01-12T16:44:57.756688Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.21,
+        "humidity": 65.35,
+        "capturedAt": "2026-01-12T16:45:14.787650Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.91,
+        "humidity": 78.75,
+        "capturedAt": "2026-01-12T16:45:31.820480Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.56,
+        "humidity": 66.67,
+        "capturedAt": "2026-01-12T16:45:48.855677Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.11,
+        "humidity": 69.01,
+        "capturedAt": "2026-01-12T16:46:05.881614Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.57,
+        "humidity": 67.23,
+        "capturedAt": "2026-01-12T16:46:22.926906Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 11.46,
+        "humidity": 63.9,
+        "capturedAt": "2026-01-12T16:46:39.970330Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.96,
+        "humidity": 78.12,
+        "capturedAt": "2026-01-12T16:46:57.021524Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.76,
+        "humidity": 70.63,
+        "capturedAt": "2026-01-12T16:47:14.069092Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.49,
+        "humidity": 73.57,
+        "capturedAt": "2026-01-12T16:47:31.120436Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.57,
+        "humidity": 69.23,
+        "capturedAt": "2026-01-12T16:47:48.166018Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.9,
+        "humidity": 68.73,
+        "capturedAt": "2026-01-12T16:48:05.219532Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.23,
+        "humidity": 72.9,
+        "capturedAt": "2026-01-12T16:48:22.246255Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.96,
+        "humidity": 68.29,
+        "capturedAt": "2026-01-12T16:48:39.273502Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.37,
+        "humidity": 78.47,
+        "capturedAt": "2026-01-12T16:48:56.328680Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.2,
+        "humidity": 72.94,
+        "capturedAt": "2026-01-12T16:49:13.371706Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.86,
+        "humidity": 65.03,
+        "capturedAt": "2026-01-12T16:49:30.434479Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.9,
+        "humidity": 75.75,
+        "capturedAt": "2026-01-12T16:49:47.487543Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.41,
+        "humidity": 75.4,
+        "capturedAt": "2026-01-12T16:50:04.535724Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.39,
+        "humidity": 66.3,
+        "capturedAt": "2026-01-12T16:50:21.585442Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.04,
+        "humidity": 74.25,
+        "capturedAt": "2026-01-12T16:50:38.618702Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.17,
+        "humidity": 62.23,
+        "capturedAt": "2026-01-12T16:50:55.661012Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.72,
+        "humidity": 65.03,
+        "capturedAt": "2026-01-12T16:51:12.702586Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.06,
+        "humidity": 76.03,
+        "capturedAt": "2026-01-12T16:51:29.736547Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.11,
+        "humidity": 74.51,
+        "capturedAt": "2026-01-12T16:51:46.775183Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 7.79,
+        "humidity": 68.91,
+        "capturedAt": "2026-01-12T16:52:03.811341Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.72,
+        "humidity": 70.4,
+        "capturedAt": "2026-01-12T16:52:20.860034Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.81,
+        "humidity": 77.55,
+        "capturedAt": "2026-01-12T16:52:37.910174Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.96,
+        "humidity": 70.06,
+        "capturedAt": "2026-01-12T16:52:54.939733Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 4.57,
+        "humidity": 68.86,
+        "capturedAt": "2026-01-12T16:53:11.974731Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.82,
+        "humidity": 68.57,
+        "capturedAt": "2026-01-12T16:53:29.031313Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.07,
+        "humidity": 69.1,
+        "capturedAt": "2026-01-12T17:09:34.769298Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.92,
+        "humidity": 65.87,
+        "capturedAt": "2026-01-12T17:09:51.833872Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 8.97,
+        "humidity": 65.73,
+        "capturedAt": "2026-01-12T17:10:08.863984Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.27,
+        "humidity": 74.81,
+        "capturedAt": "2026-01-12T17:10:25.979364Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.37,
+        "humidity": 73.93,
+        "capturedAt": "2026-01-12T17:12:02.104450Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 6.58,
+        "humidity": 74.85,
+        "capturedAt": "2026-01-12T17:12:38.201974Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 10.31,
+        "humidity": 77.05,
+        "capturedAt": "2026-01-12T17:12:55.255913Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.45,
+        "humidity": 78.62,
+        "capturedAt": "2026-01-12T17:13:12.329314Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.71,
+        "humidity": 77.33,
+        "capturedAt": "2026-01-12T17:13:29.380104Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.35,
+        "humidity": 75.13,
+        "capturedAt": "2026-01-12T17:13:46.399651Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 5.42,
+        "humidity": 65.31,
+        "capturedAt": "2026-01-12T17:14:03.457913Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 3.81,
+        "humidity": 77.07,
+        "capturedAt": "2026-01-12T17:14:20.532417Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.81,
+        "humidity": 65.33,
+        "capturedAt": "2026-01-12T17:15:58.192292Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 66.21,
+        "capturedAt": "2026-01-12T17:16:15.242422Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-002",
+        "sensorId": "SENSOR-R-002",
+        "sensorType": "retailer",
+        "temperature": 9.33,
+        "humidity": 72.11,
+        "capturedAt": "2026-01-12T17:16:32.305352Z",
+        "source": "retailer"
+      }
+    ],
+    "BATCH-003": [
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.5,
+        "humidity": 76.88,
+        "capturedAt": "2026-01-12T16:00:40.520863Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.44,
+        "humidity": 68.3,
+        "capturedAt": "2026-01-12T16:00:57.581037Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.98,
+        "humidity": 63.43,
+        "capturedAt": "2026-01-12T16:01:14.652834Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.37,
+        "humidity": 65.67,
+        "capturedAt": "2026-01-12T16:01:31.697720Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.8,
+        "humidity": 71.91,
+        "capturedAt": "2026-01-12T16:01:48.766010Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.4,
+        "humidity": 75.98,
+        "capturedAt": "2026-01-12T16:02:05.795879Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.17,
+        "humidity": 72.84,
+        "capturedAt": "2026-01-12T16:02:22.843965Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.75,
+        "humidity": 73.38,
+        "capturedAt": "2026-01-12T16:02:39.913180Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.75,
+        "humidity": 66.98,
+        "capturedAt": "2026-01-12T16:02:56.954326Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.37,
+        "humidity": 75.41,
+        "capturedAt": "2026-01-12T16:03:14.017898Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.01,
+        "humidity": 69.08,
+        "capturedAt": "2026-01-12T16:03:31.041704Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.59,
+        "humidity": 72.26,
+        "capturedAt": "2026-01-12T16:03:48.098618Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.93,
+        "humidity": 68.35,
+        "capturedAt": "2026-01-12T16:04:05.143550Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.27,
+        "humidity": 76.05,
+        "capturedAt": "2026-01-12T16:04:22.178095Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.08,
+        "humidity": 62.61,
+        "capturedAt": "2026-01-12T16:04:39.217747Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.74,
+        "humidity": 68.04,
+        "capturedAt": "2026-01-12T16:04:56.254431Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.69,
+        "humidity": 65.92,
+        "capturedAt": "2026-01-12T16:05:13.305373Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 75.52,
+        "capturedAt": "2026-01-12T16:05:30.344225Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.05,
+        "humidity": 79.85,
+        "capturedAt": "2026-01-12T16:05:47.398109Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.14,
+        "humidity": 76.0,
+        "capturedAt": "2026-01-12T16:06:04.433656Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.97,
+        "humidity": 71.54,
+        "capturedAt": "2026-01-12T16:06:21.470797Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.86,
+        "humidity": 67.18,
+        "capturedAt": "2026-01-12T16:06:38.525783Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.25,
+        "humidity": 71.39,
+        "capturedAt": "2026-01-12T16:06:55.613986Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.54,
+        "humidity": 65.95,
+        "capturedAt": "2026-01-12T16:07:12.679604Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.27,
+        "humidity": 76.26,
+        "capturedAt": "2026-01-12T16:07:29.711946Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.26,
+        "humidity": 77.16,
+        "capturedAt": "2026-01-12T16:07:46.762932Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.63,
+        "humidity": 77.47,
+        "capturedAt": "2026-01-12T16:08:03.804652Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.84,
+        "humidity": 79.81,
+        "capturedAt": "2026-01-12T16:08:20.860077Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.67,
+        "humidity": 67.02,
+        "capturedAt": "2026-01-12T16:08:37.906577Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.1,
+        "humidity": 68.21,
+        "capturedAt": "2026-01-12T16:08:54.938190Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.35,
+        "humidity": 79.66,
+        "capturedAt": "2026-01-12T16:09:11.978839Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.59,
+        "humidity": 69.47,
+        "capturedAt": "2026-01-12T16:09:29.001624Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.57,
+        "humidity": 74.7,
+        "capturedAt": "2026-01-12T16:09:46.037246Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.41,
+        "humidity": 75.52,
+        "capturedAt": "2026-01-12T16:10:03.067684Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.26,
+        "humidity": 73.9,
+        "capturedAt": "2026-01-12T16:10:20.114154Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.52,
+        "humidity": 72.16,
+        "capturedAt": "2026-01-12T16:10:37.162381Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.29,
+        "humidity": 75.61,
+        "capturedAt": "2026-01-12T16:10:54.201723Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 3.85,
+        "humidity": 78.47,
+        "capturedAt": "2026-01-12T16:11:11.257780Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.47,
+        "humidity": 78.7,
+        "capturedAt": "2026-01-12T16:11:28.289057Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.51,
+        "humidity": 67.51,
+        "capturedAt": "2026-01-12T16:11:45.315748Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.81,
+        "humidity": 66.6,
+        "capturedAt": "2026-01-12T16:12:02.344497Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 75.23,
+        "capturedAt": "2026-01-12T16:12:19.430432Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.94,
+        "humidity": 69.53,
+        "capturedAt": "2026-01-12T16:12:36.501376Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.65,
+        "humidity": 68.05,
+        "capturedAt": "2026-01-12T16:12:54.654441Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.37,
+        "humidity": 78.05,
+        "capturedAt": "2026-01-12T16:13:11.697509Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.01,
+        "humidity": 62.49,
+        "capturedAt": "2026-01-12T16:13:28.759578Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.99,
+        "humidity": 67.18,
+        "capturedAt": "2026-01-12T16:13:45.794898Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.66,
+        "humidity": 67.69,
+        "capturedAt": "2026-01-12T16:14:02.837867Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.27,
+        "humidity": 67.53,
+        "capturedAt": "2026-01-12T16:14:19.879651Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.59,
+        "humidity": 79.51,
+        "capturedAt": "2026-01-12T16:14:36.918677Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.91,
+        "humidity": 73.9,
+        "capturedAt": "2026-01-12T16:15:00.912217Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 70.49,
+        "capturedAt": "2026-01-12T16:15:17.979344Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.26,
+        "humidity": 74.54,
+        "capturedAt": "2026-01-12T16:15:35.048325Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.46,
+        "humidity": 79.97,
+        "capturedAt": "2026-01-12T16:15:52.076826Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.87,
+        "humidity": 67.04,
+        "capturedAt": "2026-01-12T16:16:09.106739Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.15,
+        "humidity": 79.18,
+        "capturedAt": "2026-01-12T16:16:26.142490Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.96,
+        "humidity": 76.96,
+        "capturedAt": "2026-01-12T16:16:43.184781Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.5,
+        "humidity": 71.98,
+        "capturedAt": "2026-01-12T16:17:00.211533Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.72,
+        "humidity": 65.89,
+        "capturedAt": "2026-01-12T16:17:17.247661Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.89,
+        "humidity": 76.1,
+        "capturedAt": "2026-01-12T16:17:34.279258Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.63,
+        "humidity": 68.15,
+        "capturedAt": "2026-01-12T16:17:51.328757Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.16,
+        "humidity": 65.93,
+        "capturedAt": "2026-01-12T16:18:08.395219Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.32,
+        "humidity": 75.45,
+        "capturedAt": "2026-01-12T16:18:25.471999Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.62,
+        "humidity": 68.08,
+        "capturedAt": "2026-01-12T16:18:42.499458Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.51,
+        "humidity": 68.35,
+        "capturedAt": "2026-01-12T16:18:59.544742Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.43,
+        "humidity": 78.28,
+        "capturedAt": "2026-01-12T16:19:16.591963Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.25,
+        "humidity": 76.6,
+        "capturedAt": "2026-01-12T16:19:52.690675Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.48,
+        "humidity": 79.07,
+        "capturedAt": "2026-01-12T16:20:09.729869Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.91,
+        "humidity": 70.09,
+        "capturedAt": "2026-01-12T16:20:45.867330Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.05,
+        "humidity": 64.35,
+        "capturedAt": "2026-01-12T16:21:02.956435Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.33,
+        "humidity": 71.26,
+        "capturedAt": "2026-01-12T16:21:20.027072Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.99,
+        "humidity": 74.99,
+        "capturedAt": "2026-01-12T16:21:37.103303Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.5,
+        "humidity": 64.04,
+        "capturedAt": "2026-01-12T16:21:54.161964Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.54,
+        "humidity": 69.3,
+        "capturedAt": "2026-01-12T16:22:11.233517Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.11,
+        "humidity": 78.01,
+        "capturedAt": "2026-01-12T16:22:28.294032Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.99,
+        "humidity": 76.24,
+        "capturedAt": "2026-01-12T16:22:45.375990Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.02,
+        "humidity": 65.48,
+        "capturedAt": "2026-01-12T16:23:02.450347Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.61,
+        "humidity": 74.06,
+        "capturedAt": "2026-01-12T16:23:19.540177Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.06,
+        "humidity": 68.84,
+        "capturedAt": "2026-01-12T16:23:36.606309Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.79,
+        "humidity": 69.83,
+        "capturedAt": "2026-01-12T16:23:53.659307Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.03,
+        "humidity": 61.59,
+        "capturedAt": "2026-01-12T16:24:10.719573Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.37,
+        "humidity": 76.02,
+        "capturedAt": "2026-01-12T16:24:27.768774Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.35,
+        "humidity": 73.36,
+        "capturedAt": "2026-01-12T16:24:44.823630Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.25,
+        "humidity": 72.67,
+        "capturedAt": "2026-01-12T16:25:01.901306Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.28,
+        "humidity": 74.55,
+        "capturedAt": "2026-01-12T16:25:18.969118Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.38,
+        "humidity": 66.22,
+        "capturedAt": "2026-01-12T16:25:36.030741Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.99,
+        "humidity": 67.1,
+        "capturedAt": "2026-01-12T16:25:53.103793Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.68,
+        "humidity": 76.58,
+        "capturedAt": "2026-01-12T16:26:10.177110Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.55,
+        "humidity": 68.06,
+        "capturedAt": "2026-01-12T16:26:27.256678Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.61,
+        "humidity": 64.27,
+        "capturedAt": "2026-01-12T16:26:44.308022Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.04,
+        "humidity": 63.81,
+        "capturedAt": "2026-01-12T16:27:01.360882Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.01,
+        "humidity": 66.75,
+        "capturedAt": "2026-01-12T16:27:18.376330Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.47,
+        "humidity": 72.28,
+        "capturedAt": "2026-01-12T16:27:35.402260Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.47,
+        "humidity": 72.18,
+        "capturedAt": "2026-01-12T16:27:52.426210Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.92,
+        "humidity": 68.7,
+        "capturedAt": "2026-01-12T16:28:09.479820Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.28,
+        "humidity": 79.62,
+        "capturedAt": "2026-01-12T16:28:26.499419Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.62,
+        "humidity": 71.93,
+        "capturedAt": "2026-01-12T16:28:43.548601Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.7,
+        "humidity": 74.67,
+        "capturedAt": "2026-01-12T16:29:00.596948Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.11,
+        "humidity": 67.73,
+        "capturedAt": "2026-01-12T16:29:17.623007Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.55,
+        "humidity": 72.9,
+        "capturedAt": "2026-01-12T16:29:34.663831Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.63,
+        "humidity": 71.55,
+        "capturedAt": "2026-01-12T16:29:51.689835Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.06,
+        "humidity": 71.52,
+        "capturedAt": "2026-01-12T16:30:08.714646Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.18,
+        "humidity": 79.08,
+        "capturedAt": "2026-01-12T16:30:25.764606Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.3,
+        "humidity": 76.84,
+        "capturedAt": "2026-01-12T16:30:42.833456Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.62,
+        "humidity": 72.06,
+        "capturedAt": "2026-01-12T16:30:59.907663Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.24,
+        "humidity": 73.04,
+        "capturedAt": "2026-01-12T16:31:16.966388Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.55,
+        "humidity": 66.72,
+        "capturedAt": "2026-01-12T16:31:34.039066Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.22,
+        "humidity": 74.12,
+        "capturedAt": "2026-01-12T16:31:51.115990Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.19,
+        "humidity": 79.39,
+        "capturedAt": "2026-01-12T16:32:08.186008Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.88,
+        "humidity": 67.16,
+        "capturedAt": "2026-01-12T16:32:25.244081Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.89,
+        "humidity": 77.72,
+        "capturedAt": "2026-01-12T16:32:42.293693Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.13,
+        "humidity": 78.48,
+        "capturedAt": "2026-01-12T16:32:59.366604Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.19,
+        "humidity": 71.82,
+        "capturedAt": "2026-01-12T16:33:16.456585Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.08,
+        "humidity": 71.59,
+        "capturedAt": "2026-01-12T16:33:33.510557Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.41,
+        "humidity": 72.47,
+        "capturedAt": "2026-01-12T16:33:50.581518Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.58,
+        "humidity": 78.8,
+        "capturedAt": "2026-01-12T16:34:07.654715Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.29,
+        "humidity": 70.91,
+        "capturedAt": "2026-01-12T16:34:24.723601Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.83,
+        "humidity": 66.05,
+        "capturedAt": "2026-01-12T16:34:41.802476Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.37,
+        "humidity": 61.73,
+        "capturedAt": "2026-01-12T16:34:58.880201Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.3,
+        "humidity": 79.0,
+        "capturedAt": "2026-01-12T16:35:15.941585Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.49,
+        "humidity": 67.97,
+        "capturedAt": "2026-01-12T16:35:33.022318Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.72,
+        "humidity": 67.36,
+        "capturedAt": "2026-01-12T16:35:50.095620Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.53,
+        "humidity": 69.78,
+        "capturedAt": "2026-01-12T16:36:07.171530Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.49,
+        "humidity": 72.41,
+        "capturedAt": "2026-01-12T16:36:24.208461Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.45,
+        "humidity": 75.06,
+        "capturedAt": "2026-01-12T16:36:41.278721Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.86,
+        "humidity": 66.6,
+        "capturedAt": "2026-01-12T16:36:58.338944Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.34,
+        "humidity": 71.02,
+        "capturedAt": "2026-01-12T16:37:15.411430Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.75,
+        "humidity": 67.44,
+        "capturedAt": "2026-01-12T16:37:32.487001Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.88,
+        "humidity": 67.04,
+        "capturedAt": "2026-01-12T16:37:49.560862Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.06,
+        "humidity": 66.2,
+        "capturedAt": "2026-01-12T16:38:06.644114Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.27,
+        "humidity": 76.47,
+        "capturedAt": "2026-01-12T16:38:23.700790Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.2,
+        "humidity": 79.49,
+        "capturedAt": "2026-01-12T16:38:40.771820Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.15,
+        "humidity": 67.67,
+        "capturedAt": "2026-01-12T16:38:57.846205Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.08,
+        "humidity": 71.02,
+        "capturedAt": "2026-01-12T16:39:14.928364Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.17,
+        "humidity": 65.41,
+        "capturedAt": "2026-01-12T16:39:31.980927Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.48,
+        "humidity": 79.6,
+        "capturedAt": "2026-01-12T16:39:49.013140Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.15,
+        "humidity": 64.32,
+        "capturedAt": "2026-01-12T16:40:06.063394Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.7,
+        "humidity": 73.43,
+        "capturedAt": "2026-01-12T16:40:27.025812Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.82,
+        "humidity": 73.98,
+        "capturedAt": "2026-01-12T16:40:44.059957Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.91,
+        "humidity": 73.28,
+        "capturedAt": "2026-01-12T16:41:01.106083Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.05,
+        "humidity": 66.78,
+        "capturedAt": "2026-01-12T16:41:18.163369Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.85,
+        "humidity": 73.61,
+        "capturedAt": "2026-01-12T16:41:35.189185Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.17,
+        "humidity": 67.05,
+        "capturedAt": "2026-01-12T16:41:52.198709Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.43,
+        "humidity": 65.79,
+        "capturedAt": "2026-01-12T16:42:09.245105Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.16,
+        "humidity": 73.16,
+        "capturedAt": "2026-01-12T16:42:26.314147Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.22,
+        "humidity": 76.51,
+        "capturedAt": "2026-01-12T16:42:43.350534Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.84,
+        "humidity": 76.63,
+        "capturedAt": "2026-01-12T16:43:00.410551Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 3.81,
+        "humidity": 73.51,
+        "capturedAt": "2026-01-12T16:43:17.473645Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.97,
+        "humidity": 69.83,
+        "capturedAt": "2026-01-12T16:43:34.539288Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.11,
+        "humidity": 77.75,
+        "capturedAt": "2026-01-12T16:43:51.620455Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.53,
+        "humidity": 65.77,
+        "capturedAt": "2026-01-12T16:44:08.687214Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.71,
+        "humidity": 73.25,
+        "capturedAt": "2026-01-12T16:44:25.754995Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.58,
+        "humidity": 68.26,
+        "capturedAt": "2026-01-12T16:44:42.778286Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.85,
+        "humidity": 66.17,
+        "capturedAt": "2026-01-12T16:44:59.830460Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.91,
+        "humidity": 78.02,
+        "capturedAt": "2026-01-12T16:45:16.890772Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.57,
+        "humidity": 68.69,
+        "capturedAt": "2026-01-12T16:45:33.912158Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.12,
+        "humidity": 67.74,
+        "capturedAt": "2026-01-12T16:45:50.950885Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.51,
+        "humidity": 73.91,
+        "capturedAt": "2026-01-12T16:46:07.996965Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 3.68,
+        "humidity": 74.93,
+        "capturedAt": "2026-01-12T16:46:25.037592Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.74,
+        "humidity": 74.36,
+        "capturedAt": "2026-01-12T16:46:42.075822Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.24,
+        "humidity": 71.26,
+        "capturedAt": "2026-01-12T16:46:59.147651Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.97,
+        "humidity": 75.2,
+        "capturedAt": "2026-01-12T16:47:16.204296Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.69,
+        "humidity": 67.07,
+        "capturedAt": "2026-01-12T16:47:33.238894Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.24,
+        "humidity": 72.82,
+        "capturedAt": "2026-01-12T16:47:50.269860Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.98,
+        "humidity": 73.76,
+        "capturedAt": "2026-01-12T16:48:07.300416Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 3.95,
+        "humidity": 72.08,
+        "capturedAt": "2026-01-12T16:48:24.352200Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.7,
+        "humidity": 79.64,
+        "capturedAt": "2026-01-12T16:48:41.417110Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.15,
+        "humidity": 78.68,
+        "capturedAt": "2026-01-12T16:48:58.440185Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.43,
+        "humidity": 69.8,
+        "capturedAt": "2026-01-12T16:49:15.481074Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.81,
+        "humidity": 70.49,
+        "capturedAt": "2026-01-12T16:49:32.544522Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.56,
+        "humidity": 71.23,
+        "capturedAt": "2026-01-12T16:49:49.604028Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.1,
+        "humidity": 72.5,
+        "capturedAt": "2026-01-12T16:50:06.646568Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.28,
+        "humidity": 73.93,
+        "capturedAt": "2026-01-12T16:50:23.693473Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.41,
+        "humidity": 72.02,
+        "capturedAt": "2026-01-12T16:50:40.726339Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.32,
+        "humidity": 79.66,
+        "capturedAt": "2026-01-12T16:50:57.772007Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.12,
+        "humidity": 71.54,
+        "capturedAt": "2026-01-12T16:51:14.850027Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.27,
+        "humidity": 74.24,
+        "capturedAt": "2026-01-12T16:51:31.896154Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.31,
+        "humidity": 78.95,
+        "capturedAt": "2026-01-12T16:51:48.960952Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.74,
+        "humidity": 71.6,
+        "capturedAt": "2026-01-12T16:52:06.004820Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.48,
+        "humidity": 67.15,
+        "capturedAt": "2026-01-12T16:52:23.036711Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.95,
+        "humidity": 70.04,
+        "capturedAt": "2026-01-12T16:52:40.087983Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.56,
+        "humidity": 72.91,
+        "capturedAt": "2026-01-12T16:52:57.127411Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 3.85,
+        "humidity": 72.08,
+        "capturedAt": "2026-01-12T16:53:14.182999Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.96,
+        "humidity": 71.83,
+        "capturedAt": "2026-01-12T16:53:31.242148Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.6,
+        "humidity": 76.33,
+        "capturedAt": "2026-01-12T17:09:36.830626Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 5.96,
+        "humidity": 68.14,
+        "capturedAt": "2026-01-12T17:09:53.889353Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.0,
+        "humidity": 67.33,
+        "capturedAt": "2026-01-12T17:10:10.944348Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.07,
+        "humidity": 76.97,
+        "capturedAt": "2026-01-12T17:10:28.035332Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.87,
+        "humidity": 69.39,
+        "capturedAt": "2026-01-12T17:12:04.173193Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.97,
+        "humidity": 71.81,
+        "capturedAt": "2026-01-12T17:12:23.218269Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.9,
+        "humidity": 74.27,
+        "capturedAt": "2026-01-12T17:12:40.286619Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 10.29,
+        "humidity": 74.98,
+        "capturedAt": "2026-01-12T17:12:57.351877Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 7.57,
+        "humidity": 75.28,
+        "capturedAt": "2026-01-12T17:13:14.430200Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.54,
+        "humidity": 67.95,
+        "capturedAt": "2026-01-12T17:13:31.472896Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.52,
+        "humidity": 71.02,
+        "capturedAt": "2026-01-12T17:13:48.507652Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 8.7,
+        "humidity": 79.88,
+        "capturedAt": "2026-01-12T17:14:05.544487Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.34,
+        "humidity": 67.48,
+        "capturedAt": "2026-01-12T17:15:02.742044Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 6.09,
+        "humidity": 65.57,
+        "capturedAt": "2026-01-12T17:16:00.249798Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 4.34,
+        "humidity": 71.58,
+        "capturedAt": "2026-01-12T17:16:17.290251Z",
+        "source": "retailer"
+      },
+      {
+        "batchId": "BATCH-003",
+        "sensorId": "SENSOR-R-003",
+        "sensorType": "retailer",
+        "temperature": 9.18,
+        "humidity": 78.02,
+        "capturedAt": "2026-01-12T17:16:34.333587Z",
         "source": "retailer"
       }
     ]

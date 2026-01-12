@@ -22,6 +22,8 @@ from schemas import (
     SensorReadingRequest,
     SensorReadingResponse,
     SensorReading,
+    SensorInfo,
+    SensorListResponse,
     QRCodeRequest,
     QRCodeResponse,
     QRScanRequest,
@@ -94,14 +96,25 @@ def _datetime_to_iso(value: datetime) -> str:
 
 
 def _map_reading(record: Dict[str, Any]) -> SensorReading:
+    temp = record["temperature"]
+    
+    # Determine temperature status
+    if temp < settings.TEMP_MIN_THRESHOLD:
+        temp_status = "Too Low"
+    elif temp > settings.TEMP_MAX_THRESHOLD:
+        temp_status = "Too High"
+    else:
+        temp_status = "Normal"
+    
     return SensorReading(
         batchId=record["batchId"],
         sensorId=record["sensorId"],
         sensorType=SensorType(record["sensorType"]),
-        temperature=record["temperature"],
+        temperature=temp,
         humidity=record["humidity"],
         capturedAt=_parse_iso(record["capturedAt"]),
         source=record.get("source", "sensor"),
+        temperatureStatus=temp_status,
     )
 
 
@@ -412,6 +425,7 @@ async def push_sensor_data(
     user: User = Depends(require_supply_chain_roles),
 ):
     registry = _require_service(sensor_registry, "Sensor registry")
+    blockchain = _require_service(blockchain_service, "Blockchain service")
     captured_at = _datetime_to_iso(request.capturedAt) if request.capturedAt else None
 
     try:
@@ -425,6 +439,31 @@ async def push_sensor_data(
         )
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    # Check temperature thresholds and report ONLY violations to blockchain
+    # Normal temperatures (2-10°C) are NOT reported to save blockchain costs
+    temp = request.temperature
+    if temp < settings.TEMP_MIN_THRESHOLD or temp > settings.TEMP_MAX_THRESHOLD:
+        try:
+            if temp < settings.TEMP_MIN_THRESHOLD:
+                alert_type = "Temperature Too Low"
+                alert_msg = f"CRITICAL: Temperature dropped to {temp}°C (below {settings.TEMP_MIN_THRESHOLD}°C threshold)"
+            else:
+                alert_type = "Temperature Too High"
+                alert_msg = f"CRITICAL: Temperature rose to {temp}°C (above {settings.TEMP_MAX_THRESHOLD}°C threshold)"
+            
+            alert_msg += f" | Sensor: {request.sensorId} | Humidity: {request.humidity}%"
+            
+            await blockchain.report_alert(
+                batch_id=request.batchId,
+                alert_type=alert_type,
+                encrypted_data=alert_msg,
+                reporter=user.username
+            )
+            logger.info(f"Temperature threshold violation reported to blockchain for batch {request.batchId}")
+        except Exception as e:
+            logger.warning(f"Failed to report temperature threshold violation to blockchain: {e}")
+    # If temperature is within normal range (2-10°C), no blockchain update is made
 
     history = await registry.get_batch_readings(entry["batchId"], limit=10)
     return SensorReadingResponse(
@@ -444,6 +483,41 @@ async def get_batch_sensor_history(batch_id: str, user: User = Depends(require_s
     return SensorReadingResponse(batchId=batch_id, samples=len(history), latest=latest, history=mapped)
 
 
+@app.get("/sensors/available", response_model=SensorListResponse)
+async def list_available_sensors(
+    sensorType: Optional[SensorType] = None,
+    user: User = Depends(require_supply_chain_roles)
+):
+    """List all available sensors for the current user's role"""
+    registry = _require_service(sensor_registry, "Sensor registry")
+    
+    # Filter by role type if specific sensor type requested
+    if not sensorType:
+        # Auto-detect based on user role
+        if user.role == UserRole.TRANSPORTER:
+            sensorType = SensorType.TRANSPORTER
+        elif user.role == UserRole.RETAILER:
+            sensorType = SensorType.RETAILER
+    
+    sensors = await registry.list_sensors(sensor_type=sensorType, owner=None)
+    
+    sensor_infos = [
+        SensorInfo(
+            sensorId=s["sensorId"],
+            sensorType=SensorType(s["sensorType"]),
+            label=s.get("label"),
+            vehicleOrStoreId=s.get("vehicleOrStoreId"),
+            owner=s["owner"],
+            registeredAt=s["registeredAt"],
+            isLinked=s.get("isLinked", False),
+            currentBatch=s.get("currentBatch")
+        )
+        for s in sensors
+    ]
+    
+    return SensorListResponse(sensors=sensor_infos)
+
+
 @app.post("/qr/generate", response_model=QRCodeResponse)
 async def generate_qr_code(request: QRCodeRequest, user: User = Depends(require_admin_or_producer)):
     qr_util = _require_service(qr_service, "QR service")
@@ -459,6 +533,7 @@ async def generate_qr_code(request: QRCodeRequest, user: User = Depends(require_
 async def scan_qr_code(request: QRScanRequest, user: User = Depends(require_retailer_or_transporter)):
     registry = _require_service(sensor_registry, "Sensor registry")
     qr_util = _require_service(qr_service, "QR service")
+    blockchain = _require_service(blockchain_service, "Blockchain service")
 
     if user.role == UserRole.TRANSPORTER and request.locationType != SensorType.TRANSPORTER:
         raise HTTPException(status_code=400, detail="Transporter can only link transporter sensors")
@@ -486,6 +561,28 @@ async def scan_qr_code(request: QRScanRequest, user: User = Depends(require_reta
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
+    # Auto-update blockchain stage when scanned
+    try:
+        if user.role == UserRole.TRANSPORTER:
+            new_stage = BatchStage.IN_TRANSIT
+            location = "In Transit"
+        elif user.role == UserRole.RETAILER:
+            new_stage = BatchStage.AT_RETAILER
+            location = "Retail Store"
+        else:
+            new_stage = None
+        
+        if new_stage:
+            await blockchain.update_stage(
+                batch_id=request.batchId,
+                new_stage=new_stage,
+                location=location,
+                updated_by=user.username
+            )
+    except Exception as e:
+        logger.warning(f"Failed to update blockchain stage for {request.batchId}: {e}")
+        # Don't fail the sensor linking if blockchain update fails
+
     return QRScanResponse(
         success=True,
         batchId=request.batchId,
@@ -501,6 +598,7 @@ async def freshness_scan(
     user: User = Depends(require_supply_chain_roles),
 ):
     classifier = _require_service(freshness_classifier, "Freshness classifier")
+    blockchain = _require_service(blockchain_service, "Blockchain service")
 
     if not file.content_type or not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="Uploaded file must be an image")
@@ -510,6 +608,36 @@ async def freshness_scan(
         prediction: FreshnessPrediction = classifier.predict(image_bytes)
     except (RuntimeError, ValueError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    # Store freshness scan result on blockchain if batchId provided
+    if batchId:
+        try:
+            # Check if freshness already recorded for this batch
+            batch_details = await blockchain.get_batch(batchId)
+            
+            # Check if freshness scan alert already exists
+            has_freshness_scan = any(
+                alert.get("alertType") == "Freshness Scan"
+                for alert in batch_details.get("alerts", [])
+            )
+            
+            if not has_freshness_scan:
+                # Store as blockchain alert (encrypted data)
+                alert_data = (
+                    f"AI Freshness Analysis: {prediction.category} "
+                    f"(Score: {prediction.score:.2%}, Confidence: {prediction.confidence:.2%}). "
+                    f"{prediction.message}"
+                )
+                
+                await blockchain.report_alert(
+                    batch_id=batchId,
+                    alert_type="Freshness Scan",
+                    encrypted_data=alert_data,
+                    reporter=user.username
+                )
+        except Exception as e:
+            logger.warning(f"Failed to store freshness scan on blockchain for {batchId}: {e}")
+            # Don't fail the scan if blockchain storage fails
 
     return FreshnessScanResponse(
         batchId=batchId,
@@ -779,6 +907,54 @@ async def fulfill_marketplace_request(
         message="Marketplace request fulfilled and child batch created",
         transactionHash=tx_hash,
     )
+
+@app.get("/batches/by-stage")
+async def get_batches_by_stage(
+    stage: Optional[str] = None,
+    user: User = Depends(require_supply_chain_roles)
+):
+    """Get all batches filtered by stage and current user responsibility"""
+    try:
+        all_batches = await blockchain_service.get_all_batches()
+        
+        # Filter by stage if provided
+        if stage:
+            filtered_batches = [b for b in all_batches if b.get("currentStage") == stage]
+            return {"success": True, "data": filtered_batches}
+        
+        # For transporter: show only batches they are handling (last updatedBy = their username)
+        if user.role == UserRole.TRANSPORTER:
+            relevant_batches = [
+                b for b in all_batches 
+                if b.get("currentStage") in ["In Transit"]
+                and b.get("locationHistory", [])
+                and any(
+                    loc.get("updatedBy") == user.username 
+                    for loc in b.get("locationHistory", [])
+                    if loc.get("stage") == "In Transit"
+                )
+            ]
+            return {"success": True, "data": relevant_batches}
+        
+        # For retailer: show only batches they are handling
+        if user.role == UserRole.RETAILER:
+            relevant_batches = [
+                b for b in all_batches 
+                if b.get("currentStage") in ["At Retailer", "Selling"]
+                and b.get("locationHistory", [])
+                and any(
+                    loc.get("updatedBy") == user.username 
+                    for loc in b.get("locationHistory", [])
+                    if loc.get("stage") in ["At Retailer", "Selling"]
+                )
+            ]
+            return {"success": True, "data": relevant_batches}
+        
+        # For producer/admin: show all
+        return {"success": True, "data": all_batches}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch batches: {str(e)}")
+
 
 # Admin-only endpoints
 @app.get("/admin/batches")

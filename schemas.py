@@ -22,6 +22,11 @@ class SensorType(str, Enum):
     TRANSPORTER = "transporter"
     RETAILER = "retailer"
 
+class TemperatureStatus(str, Enum):
+    NORMAL = "Normal"
+    TOO_LOW = "Too Low"
+    TOO_HIGH = "Too High"
+
 # Authentication Models
 class LoginRequest(BaseModel):
     username: str
@@ -124,13 +129,27 @@ class SensorReading(BaseModel):
     humidity: float
     capturedAt: datetime
     source: str
+    temperatureStatus: Optional[str] = "Normal"  # "Normal", "Too Low", or "Too High"
 
 
 class SensorReadingResponse(BaseModel):
     batchId: str
     samples: int
-    latest: Optional[SensorReading]
-    history: List[SensorReading]
+    latest: Optional[SensorReading] = None
+    history: List[SensorReading] = Field(default_factory=list)
+
+class SensorInfo(BaseModel):
+    sensorId: str
+    sensorType: SensorType
+    label: Optional[str] = None
+    vehicleOrStoreId: Optional[str] = None
+    owner: str
+    registeredAt: str
+    isLinked: bool = False
+    currentBatch: Optional[str] = None
+
+class SensorListResponse(BaseModel):
+    sensors: List[SensorInfo]
 
 
 class QRCodeRequest(BaseModel):
