@@ -270,7 +270,7 @@ class BlockchainService:
                 batch_alerts.append({
                     "alertType": alert[0],  # alertType
                     "encryptedData": alert[1].decode('utf-8') if alert[1] else "",  # encryptedData
-                    "timestamp": datetime.fromtimestamp(alert[2]).isoformat() + "Z",  # timestamp
+                    "timestamp": datetime.fromtimestamp(alert[2], timezone.utc).isoformat().replace("+00:00", "Z"),  # timestamp
                     "transactionHash": "DEMO-alert"  # Alerts don't have specific tx hashes
                 })
             
@@ -446,7 +446,7 @@ class BlockchainService:
                     location_history.append({
                         "stage": "Created",
                         "location": "Origin",
-                        "timestamp": datetime.fromtimestamp(block_info['timestamp']).isoformat() + "Z",
+                        "timestamp": datetime.fromtimestamp(block_info['timestamp'], timezone.utc).isoformat().replace("+00:00", "Z"),
                         "transactionHash": tx_hash,
                         "updatedBy": "blockchain"
                     })
@@ -476,7 +476,7 @@ class BlockchainService:
                     location_history.append({
                         "stage": stage,
                         "location": location,
-                        "timestamp": datetime.fromtimestamp(block_info['timestamp']).isoformat() + "Z",
+                        "timestamp": datetime.fromtimestamp(block_info['timestamp'], timezone.utc).isoformat().replace("+00:00", "Z"),
                         "transactionHash": tx_hash,
                         "updatedBy": "blockchain"
                     })
@@ -492,7 +492,7 @@ class BlockchainService:
                     location_history.append({
                         "stage": event[0],  # status
                         "location": event[1],  # location
-                        "timestamp": datetime.fromtimestamp(event[2]).isoformat() + "Z",  # timestamp
+                        "timestamp": datetime.fromtimestamp(event[2], timezone.utc).isoformat().replace("+00:00", "Z"),  # timestamp
                         "transactionHash": f"DEMO-{hash(batch_id + event[0]) % 0xffffffffffffffff:016x}",  # Fallback to demo hash
                         "updatedBy": "blockchain"
                     })
@@ -511,7 +511,7 @@ class BlockchainService:
                 fallback_history.append({
                     "stage": event[0],
                     "location": event[1],
-                    "timestamp": datetime.fromtimestamp(event[2]).isoformat() + "Z",
+                    "timestamp": datetime.fromtimestamp(event[2], timezone.utc).isoformat().replace("+00:00", "Z"),
                     "transactionHash": f"DEMO-{hash(batch_id + event[0]) % 0xffffffffffffffff:016x}",
                     "updatedBy": "blockchain"
                 })
