@@ -15,7 +15,7 @@ BACKEND_URL = "http://localhost:8000"
 # Transporter sensors - monitoring vehicles during transport
 # Using common batch IDs that likely exist from previous demos
 SENSORS = [
-    {"id": "SENSOR-T-001", "type": "transporter", "batch": "BATCH-001", "vehicle": "Truck-A", "route": "Farm→Warehouse"},
+    {"id": "SENSOR-T-006", "type": "transporter", "batch": "M-1", "vehicle": "Truck-A", "route": "Farm→Warehouse"},
     {"id": "SENSOR-T-005", "type": "transporter", "batch": "BATCH-002", "vehicle": "Truck-B", "route": "Warehouse→Store"},
 ]
 

@@ -44,6 +44,36 @@
       "pricingCurrency": "INR",
       "status": "published",
       "publishedAt": "2026-01-12T21:04:51.605693Z"
+    },
+    "31c6a482-4b3b-41f0-a135-ee28074a4887": {
+      "parentId": "31c6a482-4b3b-41f0-a135-ee28074a4887",
+      "parentBatchNumber": "PB-00004",
+      "producer": "producer",
+      "productType": "Apple",
+      "unit": "kg",
+      "basePrice": 10000.0,
+      "totalQuantity": 100.0,
+      "availableQuantity": 50.0,
+      "createdAt": "2026-01-13T00:38:47.704285Z",
+      "metadata": {},
+      "pricingCurrency": "INR",
+      "status": "published",
+      "publishedAt": "2026-01-13T00:38:51.707502Z"
+    },
+    "66882979-706a-4dfc-b111-0473f3a0beb1": {
+      "parentId": "66882979-706a-4dfc-b111-0473f3a0beb1",
+      "parentBatchNumber": "PB-00005",
+      "producer": "producer",
+      "productType": "Mango",
+      "unit": "kg",
+      "basePrice": 50.0,
+      "totalQuantity": 100.0,
+      "availableQuantity": 80.0,
+      "createdAt": "2026-01-13T00:47:16.181359Z",
+      "metadata": {},
+      "pricingCurrency": "INR",
+      "status": "published",
+      "publishedAt": "2026-01-13T00:47:18.799947Z"
     }
   },
   "requests": {
@@ -196,6 +226,56 @@
       },
       "childBatchId": "b1",
       "fulfilledAt": "2026-01-12T21:07:03.940365Z"
+    },
+    "409bd360-1e68-4b95-ba13-c645d67b7680": {
+      "requestId": "409bd360-1e68-4b95-ba13-c645d67b7680",
+      "parentId": "31c6a482-4b3b-41f0-a135-ee28074a4887",
+      "parentBatchNumber": "PB-00004",
+      "parentProductType": "Apple",
+      "producer": "producer",
+      "retailer": "retailer",
+      "quantity": 50.0,
+      "bidPrice": 10000.0,
+      "status": "awaiting_payment",
+      "createdAt": "2026-01-13T00:40:56.557828Z",
+      "approvedAt": "2026-01-13T00:41:17.489675Z",
+      "currency": "INR",
+      "advancePercent": 0.2,
+      "payment": {
+        "orderId": "order_S3AYbMCX9I7hex",
+        "requestId": "409bd360-1e68-4b95-ba13-c645d67b7680",
+        "amount": 10000000,
+        "currency": "INR",
+        "status": "created",
+        "createdAt": "2026-01-13T00:43:45.984487Z"
+      }
+    },
+    "5a72db1b-9aa7-4564-a1d4-f809f74e8423": {
+      "requestId": "5a72db1b-9aa7-4564-a1d4-f809f74e8423",
+      "parentId": "66882979-706a-4dfc-b111-0473f3a0beb1",
+      "parentBatchNumber": "PB-00005",
+      "parentProductType": "Mango",
+      "producer": "producer",
+      "retailer": "retailer",
+      "quantity": 20.0,
+      "bidPrice": 100.0,
+      "status": "fulfilled",
+      "createdAt": "2026-01-13T00:47:51.069777Z",
+      "approvedAt": "2026-01-13T00:48:04.924920Z",
+      "currency": "INR",
+      "advancePercent": 0.2,
+      "payment": {
+        "orderId": "order_S3AdMNZ47yoJpk",
+        "requestId": "5a72db1b-9aa7-4564-a1d4-f809f74e8423",
+        "amount": 40000,
+        "currency": "INR",
+        "status": "paid",
+        "createdAt": "2026-01-13T00:48:16.227030Z",
+        "paymentId": "pay_S3AdasUeIohKsJ",
+        "paidAt": "2026-01-13T00:48:45.699905Z"
+      },
+      "childBatchId": "M-1",
+      "fulfilledAt": "2026-01-13T00:49:18.892475Z"
     }
   },
   "payments": {
@@ -264,9 +344,27 @@
       "createdAt": "2026-01-12T21:05:43.710421Z",
       "paymentId": "pay_S36qhfkFRJHSgg",
       "paidAt": "2026-01-12T21:06:27.738977Z"
+    },
+    "order_S3AYbMCX9I7hex": {
+      "orderId": "order_S3AYbMCX9I7hex",
+      "requestId": "409bd360-1e68-4b95-ba13-c645d67b7680",
+      "amount": 10000000,
+      "currency": "INR",
+      "status": "created",
+      "createdAt": "2026-01-13T00:43:45.984487Z"
+    },
+    "order_S3AdMNZ47yoJpk": {
+      "orderId": "order_S3AdMNZ47yoJpk",
+      "requestId": "5a72db1b-9aa7-4564-a1d4-f809f74e8423",
+      "amount": 40000,
+      "currency": "INR",
+      "status": "paid",
+      "createdAt": "2026-01-13T00:48:16.227030Z",
+      "paymentId": "pay_S3AdasUeIohKsJ",
+      "paidAt": "2026-01-13T00:48:45.699905Z"
     }
   },
   "meta": {
-    "parentSequence": 3
+    "parentSequence": 5
   }
 }
