@@ -42,6 +42,7 @@ from schemas import (
     FulfillBidRequest,
 )
 from config import settings
+from services.product_ranges import check_conditions
 from auth import (
     auth_service, 
     get_current_user, 
@@ -652,35 +653,91 @@ async def push_sensor_data(
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
-    # Check temperature thresholds and report ONLY violations to blockchain
-    # Normal temperatures (2-10°C) are NOT reported to save blockchain costs
-    temp = request.temperature
-    if temp < settings.TEMP_MIN_THRESHOLD or temp > settings.TEMP_MAX_THRESHOLD:
-        try:
-            # First verify the batch exists before reporting to blockchain
-            batch_exists = await blockchain.get_batch_details(request.batchId)
-            if not batch_exists:
-                logger.warning(f"Skipping temperature alert for non-existent batch {request.batchId}")
-            else:
-                if temp < settings.TEMP_MIN_THRESHOLD:
-                    alert_type = "Temperature Too Low"
-                    alert_msg = f"CRITICAL: Temperature dropped to {temp}°C (below {settings.TEMP_MIN_THRESHOLD}°C threshold)"
+    # Use the resolved batch ID from the entry (auto-detected from sensor linkage)
+    resolved_batch_id = entry["batchId"]
+
+    # Check 30-second average against thresholds (not individual readings)
+    # This prevents false alarms from temporary fluctuations
+    try:
+        # Get batch details to determine product type
+        batch_details = await blockchain.get_batch_details(resolved_batch_id)
+        
+        if batch_details:
+            product_type = batch_details.get("productType", "").lower()
+            
+            # Get readings from last 30 seconds (for testing - change to 30 minutes for production)
+            recent_readings = await registry.get_recent_readings_for_average(resolved_batch_id, minutes=0.5)
+            
+            # Need at least 2 readings (20 seconds worth at 10s intervals) to calculate average
+            if len(recent_readings) >= 2:
+                # Calculate 30-second averages
+                avg_temp = sum(r["temperature"] for r in recent_readings) / len(recent_readings)
+                avg_humidity = sum(r["humidity"] for r in recent_readings) / len(recent_readings)
+                
+                logger.info(f"Batch {resolved_batch_id}: 30-sec avg = {avg_temp:.2f}°C, {avg_humidity:.2f}% (based on {len(recent_readings)} readings)")
+                
+                # Check if 30-minute AVERAGE is within acceptable ranges
+                condition_check = check_conditions(product_type, avg_temp, avg_humidity)
+                
+                # If there are violations in the average, report to blockchain
+                if condition_check["violations"]:
+                    alert_type = "Environmental Conditions Violation (30-sec Average)"
+                    violation_details = " | ".join(condition_check["violations"])
+                    
+                    # DETAILED LOGGING FOR VIOLATIONS
+                    logger.warning("=" * 80)
+                    logger.warning("🚨 ENVIRONMENTAL VIOLATION DETECTED 🚨")
+                    logger.warning("=" * 80)
+                    logger.warning(f"Batch ID: {resolved_batch_id}")
+                    logger.warning(f"Product Type: {product_type.capitalize()}")
+                    logger.warning(f"Sensor ID: {request.sensorId}")
+                    logger.warning(f"Reported By: {user.username}")
+                    logger.warning(f"Timestamp: {datetime.now(timezone.utc).isoformat()}")
+                    logger.warning("-" * 80)
+                    logger.warning(f"30-Second Average Temperature: {avg_temp:.2f}°C")
+                    logger.warning(f"30-Second Average Humidity: {avg_humidity:.2f}%")
+                    logger.warning(f"Based on {len(recent_readings)} readings over 30 seconds")
+                    logger.warning("-" * 80)
+                    
+                    if condition_check.get("ranges"):
+                        ranges = condition_check["ranges"]
+                        logger.warning(f"Expected Temperature Range: {ranges['temperature']['min']}°C to {ranges['temperature']['max']}°C")
+                        logger.warning(f"Expected Humidity Range: {ranges['humidity']['min']}% to {ranges['humidity']['max']}%")
+                        logger.warning("-" * 80)
+                    
+                    logger.warning("VIOLATIONS:")
+                    for violation in condition_check["violations"]:
+                        logger.warning(f"  ❌ {violation}")
+                    logger.warning("-" * 80)
+                    logger.warning("✅ Storing violation to BLOCKCHAIN...")
+                    
+                    alert_msg = f"CRITICAL: {violation_details}"
+                    alert_msg += f" | Product: {product_type.capitalize()}"
+                    alert_msg += f" | Sensor: {request.sensorId}"
+                    alert_msg += f" | Based on {len(recent_readings)} readings over 30 seconds"
+                    
+                    if condition_check.get("ranges"):
+                        ranges = condition_check["ranges"]
+                        alert_msg += f" | Expected Temp: {ranges['temperature']['min']}°C to {ranges['temperature']['max']}°C"
+                        alert_msg += f" | Expected Humidity: {ranges['humidity']['min']}% to {ranges['humidity']['max']}%"
+                    
+                    await blockchain.report_excursion(
+                        batch_id=resolved_batch_id,
+                        alert_type=alert_type,
+                        encrypted_data=alert_msg,
+                        reported_by=user.username
+                    )
+                    logger.warning("✅ Violation successfully stored in blockchain!")
+                    logger.warning("=" * 80)
                 else:
-                    alert_type = "Temperature Too High"
-                    alert_msg = f"CRITICAL: Temperature rose to {temp}°C (above {settings.TEMP_MAX_THRESHOLD}°C threshold)"
-                
-                alert_msg += f" | Sensor: {request.sensorId} | Humidity: {request.humidity}%"
-                
-                await blockchain.report_excursion(
-                    batch_id=request.batchId,
-                    alert_type=alert_type,
-                    encrypted_data=alert_msg,
-                    reported_by=user.username
-                )
-                logger.info(f"Temperature threshold violation reported to blockchain for batch {request.batchId}")
-        except Exception as e:
-            logger.warning(f"Failed to report temperature threshold violation to blockchain: {e}")
-    # If temperature is within normal range (2-10°C), no blockchain update is made
+                    logger.info(f"Batch {resolved_batch_id}: 30-sec average within acceptable range")
+            else:
+                logger.info(f"Batch {resolved_batch_id}: Not enough readings yet ({len(recent_readings)}/2) for 30-sec average check")
+        else:
+            logger.warning(f"Batch {resolved_batch_id} not found, skipping threshold check")
+    except Exception as e:
+        logger.error(f"Failed to check thresholds or report to blockchain: {e}")
+    # All sensor readings are stored locally, blockchain only receives 30-sec average violations
 
     history = await registry.get_batch_readings(entry["batchId"], limit=10)
     return SensorReadingResponse(
@@ -698,6 +755,24 @@ async def get_batch_sensor_history(batch_id: str, user: User = Depends(require_s
     mapped = [_map_reading(record) for record in history]
     latest = mapped[0] if mapped else None
     return SensorReadingResponse(batchId=batch_id, samples=len(history), latest=latest, history=mapped)
+
+
+@app.get("/sensors/{sensor_id}/binding")
+async def get_sensor_binding(sensor_id: str, user: User = Depends(require_supply_chain_roles)):
+    """Get the batch that a sensor is currently linked to"""
+    registry = _require_service(sensor_registry, "Sensor registry")
+    binding = await registry.get_sensor_binding(sensor_id)
+    
+    if not binding:
+        raise HTTPException(status_code=404, detail="Sensor not linked to any batch")
+    
+    return {
+        "sensorId": sensor_id,
+        "batchId": binding.get("batchId"),
+        "locationType": binding.get("locationType"),
+        "linkedAt": binding.get("linkedAt"),
+        "linkedBy": binding.get("linkedBy")
+    }
 
 
 @app.get("/sensors/available", response_model=SensorListResponse)

@@ -4,13 +4,15 @@ from __future__ import annotations
 
 import asyncio
 import json
-from datetime import datetime, timezone
+import logging
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from schemas import SensorType
 
 ISO_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
+logger = logging.getLogger(__name__)
 
 
 def _now_iso() -> str:
@@ -92,6 +94,17 @@ class SensorRegistry:
             if sensor_id not in self._state["sensors"]:
                 raise ValueError(f"Sensor {sensor_id} is not registered")
 
+            # AUTO-UNLINK: When linking a new location type (e.g., retailer), unlink the previous one (e.g., transporter)
+            batch_links = self._state["batchLinks"].setdefault(batch_id, {})
+            existing_binding = batch_links.get(location_type.value)
+            
+            if existing_binding:
+                old_sensor_id = existing_binding.get("sensorId")
+                if old_sensor_id and old_sensor_id != sensor_id:
+                    # Unlink the old sensor for this location type
+                    self._state["sensorLinks"].pop(old_sensor_id, None)
+                    logger.info(f"Auto-unlinked {old_sensor_id} from batch {batch_id} ({location_type.value})")
+
             binding = {
                 "sensorId": sensor_id,
                 "batchId": batch_id,
@@ -101,9 +114,10 @@ class SensorRegistry:
             }
 
             self._state["sensorLinks"][sensor_id] = binding
-            batch_links = self._state["batchLinks"].setdefault(batch_id, {})
             batch_links[location_type.value] = binding
             self._write_state()
+            
+            logger.info(f"Linked {sensor_id} to batch {batch_id} ({location_type.value}) by {linked_by}")
             return binding
 
     async def unlink_batch(self, batch_id: str, location_type: SensorType) -> None:
@@ -166,6 +180,28 @@ class SensorRegistry:
         async with self._lock:
             readings = self._state["readings"].get(batch_id, [])
             return list(reversed(readings))[:limit]
+    
+    async def get_recent_readings_for_average(self, batch_id: str, minutes: int = 30) -> List[Dict[str, Any]]:
+        """Get readings from the last N minutes for averaging"""
+        async with self._lock:
+            readings = self._state["readings"].get(batch_id, [])
+            if not readings:
+                return []
+            
+            # Calculate cutoff time
+            cutoff = datetime.now(timezone.utc) - timedelta(minutes=minutes)
+            
+            # Filter readings within the time window
+            recent = []
+            for reading in reversed(readings):  # Most recent first
+                try:
+                    captured_at = datetime.fromisoformat(reading["capturedAt"].replace("Z", "+00:00"))
+                    if captured_at >= cutoff:
+                        recent.append(reading)
+                except Exception:
+                    continue
+            
+            return recent
 
     async def get_batch_bindings(self, batch_id: str) -> Dict[str, Any]:
         async with self._lock:
